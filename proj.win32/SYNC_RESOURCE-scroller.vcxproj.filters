@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\pj\scroller3\proj.win32\CMakeFiles\8e045092250a136db7ea11d6359e0b22\SYNC_RESOURCE-scroller.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\pj\scroller3\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\pj\scroller3\proj.win32\CMakeFiles\SYNC_RESOURCE-scroller" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{09FD01EE-8335-3737-97E7-C4368528BA87}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{49004DC9-5590-3439-86FB-5064F574C4E5}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\pj\scroller3\cocos2d\cocos\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/pj/scroller3/cocos2d/cocos/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/pj/scroller3 -BC:/pj/scroller3/proj.win32 --check-stamp-file C:/pj/scroller3/proj.win32/engine/cocos/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\pj\scroller3\cocos2d\cocos\2d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\audio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\base\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\math\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\navmesh\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\network\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\platform\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\renderer\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\ui\CMakeLists.txt;C:\pj\scroller3\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\pj\scroller3\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/pj/scroller3/cocos2d/cocos/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/pj/scroller3 -BC:/pj/scroller3/proj.win32 --check-stamp-file C:/pj/scroller3/proj.win32/engine/cocos/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\pj\scroller3\cocos2d\cocos\2d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\audio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\base\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\math\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\navmesh\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\network\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\platform\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\renderer\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\ui\CMakeLists.txt;C:\pj\scroller3\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\pj\scroller3\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/pj/scroller3/cocos2d/cocos/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/pj/scroller3 -BC:/pj/scroller3/proj.win32 --check-stamp-file C:/pj/scroller3/proj.win32/engine/cocos/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\pj\scroller3\cocos2d\cocos\2d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\audio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\base\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\math\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\navmesh\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\network\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\platform\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\renderer\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\ui\CMakeLists.txt;C:\pj\scroller3\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\pj\scroller3\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/pj/scroller3/cocos2d/cocos/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/pj/scroller3 -BC:/pj/scroller3/proj.win32 --check-stamp-file C:/pj/scroller3/proj.win32/engine/cocos/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\pj\scroller3\cocos2d\cocos\2d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\audio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\base\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\math\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\navmesh\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\network\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\physics3d\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\platform\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\renderer\CMakeLists.txt;C:\pj\scroller3\cocos2d\cocos\ui\CMakeLists.txt;C:\pj\scroller3\cocos2d\extensions\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\pj\scroller3\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\ZERO_CHECK.vcxproj">
+      <Project>{CDAF1C39-080E-31E1-BBE9-347C447A81D2}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\cocos\core\cocos2d.vcxproj">
+      <Project>{FE3EC042-9F99-30D6-9A9E-6DAE4CE78EBB}</Project>
+      <Name>cocos2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\clipper\ext_clipper.vcxproj">
+      <Project>{C67D663F-134D-308F-96A7-5AE2D1DA3A79}</Project>
+      <Name>ext_clipper</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
+      <Project>{B0310766-795A-3B32-AB35-E2C9D0A71790}</Project>
+      <Name>ext_convertUTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
+      <Project>{61426B5F-737A-32DD-83F5-4B6C13E2C879}</Project>
+      <Name>ext_edtaa3func</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\md5\ext_md5.vcxproj">
+      <Project>{CC287970-AAE3-3815-8F62-A36B1C45FD78}</Project>
+      <Name>ext_md5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\poly2tri\ext_poly2tri.vcxproj">
+      <Project>{F8683557-B69A-34EB-A5D9-8A5A3149CD5E}</Project>
+      <Name>ext_poly2tri</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\recast\ext_recast.vcxproj">
+      <Project>{44C40391-307E-384C-BBFF-C90CA712C1E0}</Project>
+      <Name>ext_recast</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
+      <Project>{C4C57D87-EF13-39DA-8A8C-7D4575FC2A40}</Project>
+      <Name>ext_tinyxml2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\unzip\ext_unzip.vcxproj">
+      <Project>{F04F8385-6C9C-361E-819A-4B09324316A2}</Project>
+      <Name>ext_unzip</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\xxhash\ext_xxhash.vcxproj">
+      <Project>{84926EC7-ECF0-3227-B119-3AC9C86935A9}</Project>
+      <Name>ext_xxhash</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\xxtea\ext_xxtea.vcxproj">
+      <Project>{32466A2E-2BA3-3936-A2DC-ABC4C5035DF8}</Project>
+      <Name>ext_xxtea</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\pj\scroller3\proj.win32\engine\external\external.vcxproj">
+      <Project>{A48E6CF4-26FF-399D-8D46-58EAA8BF6D18}</Project>
+      <Name>external</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
