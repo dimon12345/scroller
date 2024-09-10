@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\pj\scroller3\cocos2d\external\ConvertUTF\ConvertUTF.c">
+    <ClCompile Include="C:\pj\scroller\cocos2d\external\ConvertUTF\ConvertUTF.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\pj\scroller3\cocos2d\external\ConvertUTF\ConvertUTFWrapper.cpp">
+    <ClCompile Include="C:\pj\scroller\cocos2d\external\ConvertUTF\ConvertUTFWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\pj\scroller3\cocos2d\external\ConvertUTF\CMakeLists.txt" />
+    <CustomBuild Include="C:\pj\scroller\cocos2d\external\ConvertUTF\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{40F7C403-C6FA-347D-84CD-1059A6B2E1AB}</UniqueIdentifier>
+      <UniqueIdentifier>{FBEAE93D-421A-3A9F-84A9-C61CEFD5840A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
