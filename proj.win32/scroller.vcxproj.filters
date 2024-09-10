@@ -7,6 +7,9 @@
     <ClCompile Include="C:\pj\scroller3\Classes\HelloWorldScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller3\Classes\nodes\Background.cpp">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller3\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
@@ -20,6 +23,9 @@
     </ClInclude>
     <ClInclude Include="C:\pj\scroller3\Classes\HelloWorldScene.h">
       <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller3\Classes\nodes\Background.h">
+      <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller3\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
@@ -45,6 +51,9 @@
     <ClInclude Include="C:\pj\scroller3\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
     </ClInclude>
+    <ClInclude Include="C:\pj\scroller3\Resources\world\cloud.png">
+      <Filter>Resources\world</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\pj\scroller3\CMakeLists.txt" />
@@ -64,11 +73,17 @@
     <Filter Include="Resources\res">
       <UniqueIdentifier>{650F2F7D-C0FA-3886-BFFC-8B7A0AFCB7FB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\world">
+      <UniqueIdentifier>{D0A271C7-431D-3A05-AAAF-F27FB408308B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{40F7C403-C6FA-347D-84CD-1059A6B2E1AB}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Classes">
       <UniqueIdentifier>{0082725A-A41F-3A42-9A14-282FC48F9ACC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\nodes">
+      <UniqueIdentifier>{5A57A750-28CA-3292-B6EA-5C3C89CCCCE7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\proj.win32">
       <UniqueIdentifier>{FEB4A14A-3B3B-3514-8EFF-47E29AE5D23A}</UniqueIdentifier>

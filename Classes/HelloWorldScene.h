@@ -25,10 +25,17 @@
 #ifndef __HELLOWORLD_SCENE_H__
 #define __HELLOWORLD_SCENE_H__
 
+#include "nodes/Background.h"
+
 #include "cocos2d.h"
+
+#include <list>
 
 class HelloWorld : public cocos2d::Scene
 {
+    const static int CLOUNDS_COUNT = 30;
+    cocos2d::Size visibleSize;
+    Background _backgrounds[CLOUNDS_COUNT];
 public:
     static cocos2d::Scene* createScene();
 

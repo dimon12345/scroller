@@ -48,8 +48,11 @@ bool HelloWorld::init()
         return false;
     }
 
-    auto visibleSize = Director::getInstance()->getVisibleSize();
+    visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+    auto bg = LayerColor::create(Color4B(136, 210, 242, 255));
+    this->addChild(bg, -2);
 
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
@@ -100,23 +103,13 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
+    for (int i = 0; i < CLOUNDS_COUNT; ++i) {
+        auto cloudSprite = _backgrounds[i].create(visibleSize);
+        this->addChild(cloudSprite, -1);
     }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
+    
     return true;
 }
-
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
