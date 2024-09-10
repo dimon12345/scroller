@@ -9,10 +9,6 @@ class Bullet {
 	cocos2d::Vec2 _velocity;
 
 public:
-
-	Bullet();
-	~Bullet();
-
 	cocos2d::Node* create(const cocos2d::Size& visibleSize, const cocos2d::Vec2& position);
 	void update(float dt);
 	bool isVisible();

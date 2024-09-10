@@ -107,6 +107,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
+    srand(static_cast <unsigned> (time(0)));
+
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 

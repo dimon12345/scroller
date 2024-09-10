@@ -61,6 +61,8 @@ list(APPEND GAME_SOURCE
      Classes/nodes/Background.cpp
      Classes/nodes/Fighter.cpp
      Classes/nodes/Bullet.cpp
+     Classes/nodes/EnemyFactory.cpp
+     Classes/nodes/enemies/Bird.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -68,6 +70,9 @@ list(APPEND GAME_HEADER
      Classes/nodes/Background.h
      Classes/nodes/Fighter.h
      Classes/nodes/Bullet.h
+     Classes/nodes/Enemy.h
+     Classes/nodes/EnemyFactory.h
+     Classes/nodes/enemies/Bird.h
      )
 
 if(ANDROID)

@@ -8,7 +8,7 @@
 USING_NS_CC;
 
 #define FIGHTER_ACCELERATION_RATE 200.f
-#define FIGHTER_MAX_VELOCITY 200.f
+#define FIGHTER_MAX_VELOCITY 300.f
 #define FIGHTER_STOP_DISTANCE 10.f
 #define FIGHTER_BREAK_ACCELERATION_RATE -400.f
 #define FIGHTER_ON_PLACE_EPSILON 2.f
@@ -56,16 +56,15 @@ void Fighter::update(float dt)
 }
 
 void Fighter::updatePosition(float dt) {
-    float maxVelocity = 200;
     auto distance = abs(_cursorY - _positionY);
-    auto distanceEpsilon = maxVelocity * dt;
+    auto distanceEpsilon = FIGHTER_MAX_VELOCITY * dt;
 
     if (distance > distanceEpsilon) {
         if (_cursorY - _positionY > 0) {
-            _positionY += maxVelocity * dt;
+            _positionY += FIGHTER_MAX_VELOCITY * dt;
         }
         else {
-            _positionY -= maxVelocity * dt;
+            _positionY -= FIGHTER_MAX_VELOCITY * dt;
         }
     }
     else {
@@ -113,4 +112,3 @@ void Fighter::updateBullets(float dt) {
         _fighterSprite->getParent()->addChild(bulletSprite);
     }
 }
-

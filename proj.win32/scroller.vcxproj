@@ -825,6 +825,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Fighter.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Enemy.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\EnemyFactory.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bird.h" />
     <ClInclude Include="C:\pj\scroller\proj.win32\main.h" />
     <ClInclude Include="C:\pj\scroller\proj.win32\resource.h" />
     <ClCompile Include="C:\pj\scroller\Classes\AppDelegate.cpp" />
@@ -832,6 +835,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Fighter.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\EnemyFactory.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bird.cpp" />
     <ClCompile Include="C:\pj\scroller\proj.win32\main.cpp" />
     <ResourceCompile Include="C:\pj\scroller\proj.win32\game.rc" />
     <ClInclude Include="C:\pj\scroller\Resources\CloseNormal.png" />
@@ -840,6 +845,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Resources\fonts\Marker Felt.ttf" />
     <ClInclude Include="C:\pj\scroller\Resources\fonts\arial.ttf" />
     <ClInclude Include="C:\pj\scroller\Resources\res\.gitkeep" />
+    <ClInclude Include="C:\pj\scroller\Resources\world\bird.png" />
+    <ClInclude Include="C:\pj\scroller\Resources\world\bullet.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\cloud.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\fighter.png" />
     <ClCompile Include="C:\pj\scroller\cocos2d\cocos\precheader.cpp" />

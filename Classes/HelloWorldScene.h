@@ -27,6 +27,7 @@
 
 #include "nodes/Background.h"
 #include "nodes/Fighter.h"
+#include "nodes/Enemy.h"
 
 #include "cocos2d.h"
 
@@ -36,9 +37,13 @@ class HelloWorld : public cocos2d::Layer
 {
     cocos2d::EventListenerMouse *_mouseListener;
     const static int CLOUNDS_COUNT = 30;
-    cocos2d::Size visibleSize;
+    cocos2d::Size _visibleSize;
     Background _backgrounds[CLOUNDS_COUNT];
     Fighter _fighter;
+    float _nextEnemyTime;
+    float _nextTimeAddEnemy;
+    std::list<std::shared_ptr<Enemy>> _enemies;
+    size_t _maxEnemies;
 public:
     static cocos2d::Scene* createScene();
 

@@ -4,19 +4,6 @@ USING_NS_CC;
 
 #define BULLET_X_VELOCITY 150.f
 
-static int _g_count = 0;
-
-Bullet::Bullet()
-{
-    
-    log("bullet(): n: %d", ++_g_count);
-}
-
-Bullet::~Bullet()
-{
-    log("~bullet(): n: %d", --_g_count);
-}
-
 Node* Bullet::create(const cocos2d::Size& visibleSize, const Vec2 &position)
 {
     _visibleSize = visibleSize;

@@ -24,7 +24,14 @@
 
 #include "HelloWorldScene.h"
 
+#include "nodes/EnemyFactory.h"
+
+//#include <utility>
+
 USING_NS_CC;
+
+#define NEXT_ENEMY_DELAY 1.0f
+#define NEXT_TIME_ADD_ENEMY 3.0f
 
 Scene* HelloWorld::createScene()
 {
@@ -51,7 +58,7 @@ bool HelloWorld::init()
         return false;
     }
 
-    visibleSize = Director::getInstance()->getVisibleSize();
+    _visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     auto bg = LayerColor::create(Color4B(136, 210, 242, 255));
@@ -75,7 +82,7 @@ bool HelloWorld::init()
     }
     else
     {
-        float x = origin.x + visibleSize.width - closeItem->getContentSize().width/2;
+        float x = origin.x + _visibleSize.width - closeItem->getContentSize().width/2;
         float y = origin.y + closeItem->getContentSize().height/2;
         closeItem->setPosition(Vec2(x,y));
     }
@@ -99,19 +106,19 @@ bool HelloWorld::init()
     else
     {
         // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                                origin.y + visibleSize.height - label->getContentSize().height));
+        label->setPosition(Vec2(origin.x + _visibleSize.width/2,
+                                origin.y + _visibleSize.height - label->getContentSize().height));
 
         // add the label as a child to this layer
         this->addChild(label, 1);
     }
 
     for (int i = 0; i < CLOUNDS_COUNT; ++i) {
-        auto cloudSprite = _backgrounds[i].create(visibleSize);
+        auto cloudSprite = _backgrounds[i].create(_visibleSize);
         this->addChild(cloudSprite, -1);
     }
 
-    this->addChild(_fighter.create(visibleSize));
+    this->addChild(_fighter.create(_visibleSize));
 
     _mouseListener = EventListenerMouse::create();
     _mouseListener->onMouseDown = CC_CALLBACK_1(Fighter::onMouseDown, &_fighter);
@@ -122,12 +129,41 @@ bool HelloWorld::init()
 
     scheduleUpdate();
 
+    _nextEnemyTime = NEXT_ENEMY_DELAY;
+    _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
+    _maxEnemies = 1;
+
     return true;
 }
 
 void HelloWorld::update(float dt)
 {
     _fighter.update(dt);
+
+
+    _nextTimeAddEnemy -= dt;
+    if (_nextTimeAddEnemy <= 0) {
+        _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
+        ++_maxEnemies;
+    }
+
+    _nextEnemyTime -= dt;
+    if (_nextEnemyTime <= 0 && (_enemies.size() < _maxEnemies)) {
+        _nextEnemyTime = NEXT_ENEMY_DELAY;
+        std::shared_ptr<Enemy> enemy(EnemyFactory::createEnemy());
+
+        auto sprite = enemy->create(_visibleSize);
+        this->addChild(sprite);
+
+        _enemies.push_back(enemy);
+    }
+
+    for (auto enemy : _enemies) {
+        enemy->update(dt);
+        if (!enemy->isVisible()) {
+            enemy->reset();
+        }
+    }
 }
 
 
