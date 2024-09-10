@@ -42,3 +42,8 @@ void Background::restartClouds(bool randomX = false)
     _cloudSprite->setPosition(Vec2::ZERO);
     _cloudSprite->runAction(cloudSequence);
 }
+
+void Background::stop()
+{
+    _cloudSprite->stopAllActions();
+}

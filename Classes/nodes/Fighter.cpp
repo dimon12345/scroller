@@ -13,6 +13,13 @@ USING_NS_CC;
 #define FIGHTER_BREAK_ACCELERATION_RATE -400.f
 #define FIGHTER_ON_PLACE_EPSILON 2.f
 #define FIGHTER_NEXT_SHOT_TIME_INTERVAL 0.2f
+#define FIGHTER_NODE_TAG 33
+
+Fighter::Fighter(bool& gameOver)
+    : _gameOver(gameOver)
+{
+
+}
 
 Node* Fighter::create(const cocos2d::Size& visibleSize)
 {
@@ -20,10 +27,42 @@ Node* Fighter::create(const cocos2d::Size& visibleSize)
     _positionY = _visibleSize.height / 2;
 
     _fighterSprite = Sprite::create("world\\fighter.png");
+    _fighterSprite->setTag(FIGHTER_NODE_TAG);
+    auto body = PhysicsBody::createBox(_fighterSprite->getContentSize());
+    _fighterSprite->setPhysicsBody(body);
+    body->setContactTestBitmask(0xFFFFFFFF);
+    body->setDynamic(false);
+
     _xOffset = visibleSize.width * 0.3f;
     _fighterSprite->setPosition(Vec2(_xOffset, _positionY));
 
+    _fire = false;
+
     return _fighterSprite;
+}
+
+bool Fighter::onContactBegin(PhysicsContact& contact)
+{
+    //auto shapeA = contact.getShapeA();
+    //auto shapeB = contact.getShapeB();
+    //if ((shapeA->getCategoryBitmask() & shapeB->getCollisionBitmask()) == 0
+    //    || (shapeB->getCategoryBitmask() & shapeA->getCollisionBitmask()) == 0)
+    //{
+    //    return false;
+    //}
+
+    if (contact.getShapeA()->getBody()->getNode()->getTag() == FIGHTER_NODE_TAG) {
+        _gameOver = true;
+        return true;
+    }
+
+    if (contact.getShapeB()->getBody()->getNode()->getTag() == FIGHTER_NODE_TAG) {
+        _gameOver = true;
+        return true;
+    }
+
+    return false;
+
 }
 
 void Fighter::onMouseMove(Event* event)

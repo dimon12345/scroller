@@ -13,7 +13,7 @@ class Fighter {
 	float _cursorY;
 	float _positionY;
 	float _xOffset;
-	bool _fire;
+	bool _fire = false;
 	float _nextShotTime;
 
 	void updatePosition(float ft);
@@ -21,8 +21,12 @@ class Fighter {
 
 	std::list<std::shared_ptr<Bullet>> _bullets;
 
+	bool& _gameOver;
+
 public:
+	Fighter(bool& gameOver);
 	cocos2d::Node* create(const cocos2d::Size& visibleSize);
+	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	void onMouseMove(cocos2d::Event* event);
 	void onMouseDown(cocos2d::Event* event);
 	void onMouseUp(cocos2d::Event* event);

@@ -33,9 +33,15 @@ USING_NS_CC;
 #define NEXT_ENEMY_DELAY 1.0f
 #define NEXT_TIME_ADD_ENEMY 3.0f
 
+HelloWorld::HelloWorld()
+    : _fighter(_gameOver)
+{
+
+}
+
 Scene* HelloWorld::createScene()
 {
-    auto scene = Scene::create();
+    auto scene = Scene::createWithPhysics();
     auto layer = HelloWorld::create();
     scene->addChild(layer);
     return scene;
@@ -57,6 +63,8 @@ bool HelloWorld::init()
     {
         return false;
     }
+
+    _gameOver = false;
 
     _visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -92,33 +100,16 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    if (label == nullptr)
-    {
-        problemLoading("'fonts/Marker Felt.ttf'");
-    }
-    else
-    {
-        // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + _visibleSize.width/2,
-                                origin.y + _visibleSize.height - label->getContentSize().height));
-
-        // add the label as a child to this layer
-        this->addChild(label, 1);
-    }
-
     for (int i = 0; i < CLOUNDS_COUNT; ++i) {
         auto cloudSprite = _backgrounds[i].create(_visibleSize);
         this->addChild(cloudSprite, -1);
     }
 
     this->addChild(_fighter.create(_visibleSize));
+
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = CC_CALLBACK_1(Fighter::onContactBegin, &_fighter);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
     _mouseListener = EventListenerMouse::create();
     _mouseListener->onMouseDown = CC_CALLBACK_1(Fighter::onMouseDown, &_fighter);
@@ -138,6 +129,22 @@ bool HelloWorld::init()
 
 void HelloWorld::update(float dt)
 {
+    if (_gameOver) {
+        if (!_gameOverLabel) {
+            _gameOverLabel = Label::createWithTTF("Game\nover!", "fonts/Marker Felt.ttf", 124);
+            _gameOverLabel->setTextColor(Color4B(120, 12, 12, 255));
+            _gameOverLabel->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2));
+            this->addChild(_gameOverLabel, 1);
+
+            for (auto cloud : _backgrounds) {
+                cloud.stop();
+            }
+            
+        }
+
+        return;
+    }
+
     _fighter.update(dt);
 
 

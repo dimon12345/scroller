@@ -9,4 +9,5 @@ class Background {
 	cocos2d::Vec2 _points[2];
 public:
 	cocos2d::Node* create(const cocos2d::Size& visibleSize);
+	void stop();
 };
