@@ -10,6 +10,9 @@
     <ClCompile Include="C:\pj\scroller3\Classes\nodes\Background.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller3\Classes\nodes\Fighter.cpp">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller3\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
@@ -25,6 +28,9 @@
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller3\Classes\nodes\Background.h">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller3\Classes\nodes\Fighter.h">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller3\proj.win32\main.h">
@@ -52,6 +58,9 @@
       <Filter>Resources\res</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller3\Resources\world\cloud.png">
+      <Filter>Resources\world</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller3\Resources\world\fighter.png">
       <Filter>Resources\world</Filter>
     </ClInclude>
   </ItemGroup>

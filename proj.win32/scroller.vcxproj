@@ -823,11 +823,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller3\Classes\AppDelegate.h" />
     <ClInclude Include="C:\pj\scroller3\Classes\HelloWorldScene.h" />
     <ClInclude Include="C:\pj\scroller3\Classes\nodes\Background.h" />
+    <ClInclude Include="C:\pj\scroller3\Classes\nodes\Fighter.h" />
     <ClInclude Include="C:\pj\scroller3\proj.win32\main.h" />
     <ClInclude Include="C:\pj\scroller3\proj.win32\resource.h" />
     <ClCompile Include="C:\pj\scroller3\Classes\AppDelegate.cpp" />
     <ClCompile Include="C:\pj\scroller3\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="C:\pj\scroller3\Classes\nodes\Background.cpp" />
+    <ClCompile Include="C:\pj\scroller3\Classes\nodes\Fighter.cpp" />
     <ClCompile Include="C:\pj\scroller3\proj.win32\main.cpp" />
     <ResourceCompile Include="C:\pj\scroller3\proj.win32\game.rc" />
     <ClInclude Include="C:\pj\scroller3\Resources\CloseNormal.png" />
@@ -837,6 +839,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller3\Resources\fonts\arial.ttf" />
     <ClInclude Include="C:\pj\scroller3\Resources\res\.gitkeep" />
     <ClInclude Include="C:\pj\scroller3\Resources\world\cloud.png" />
+    <ClInclude Include="C:\pj\scroller3\Resources\world\fighter.png" />
     <ClCompile Include="C:\pj\scroller3\cocos2d\cocos\precheader.cpp" />
   </ItemGroup>
   <ItemGroup>

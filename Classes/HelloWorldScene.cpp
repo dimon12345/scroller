@@ -28,7 +28,10 @@ USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
-    return HelloWorld::create();
+    auto scene = Scene::create();
+    auto layer = HelloWorld::create();
+    scene->addChild(layer);
+    return scene;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -43,7 +46,7 @@ bool HelloWorld::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !Scene::init() )
+    if ( !Layer::init() )
     {
         return false;
     }
@@ -107,9 +110,26 @@ bool HelloWorld::init()
         auto cloudSprite = _backgrounds[i].create(visibleSize);
         this->addChild(cloudSprite, -1);
     }
-    
+
+    this->addChild(_fighter.create(visibleSize));
+
+    _mouseListener = EventListenerMouse::create();
+    _mouseListener->onMouseDown = CC_CALLBACK_1(Fighter::onMouseDown, &_fighter);
+    _mouseListener->onMouseUp = CC_CALLBACK_1(Fighter::onMouseUp, &_fighter);
+    _mouseListener->onMouseMove = CC_CALLBACK_1(Fighter::onMouseMove, &_fighter);
+
+    _eventDispatcher->addEventListenerWithFixedPriority(_mouseListener, 1);
+
+    scheduleUpdate();
+
     return true;
 }
+
+void HelloWorld::update(float dt)
+{
+    _fighter.update(dt);
+}
+
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {

@@ -26,16 +26,19 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "nodes/Background.h"
+#include "nodes/Fighter.h"
 
 #include "cocos2d.h"
 
 #include <list>
 
-class HelloWorld : public cocos2d::Scene
+class HelloWorld : public cocos2d::Layer
 {
+    cocos2d::EventListenerMouse *_mouseListener;
     const static int CLOUNDS_COUNT = 30;
     cocos2d::Size visibleSize;
     Background _backgrounds[CLOUNDS_COUNT];
+    Fighter _fighter;
 public:
     static cocos2d::Scene* createScene();
 
@@ -43,7 +46,8 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
-    
+    void update(float dt);
+
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };
