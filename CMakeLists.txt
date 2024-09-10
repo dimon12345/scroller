@@ -60,12 +60,14 @@ list(APPEND GAME_SOURCE
      Classes/HelloWorldScene.cpp
      Classes/nodes/Background.cpp
      Classes/nodes/Fighter.cpp
+     Classes/nodes/Bullet.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
      Classes/nodes/Background.h
      Classes/nodes/Fighter.h
+     Classes/nodes/Bullet.h
      )
 
 if(ANDROID)

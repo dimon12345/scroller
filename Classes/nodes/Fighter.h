@@ -1,6 +1,11 @@
 #pragma once
 
+#include "Bullet.h"
+
 #include "cocos2d.h"
+
+#include <list>
+#include <memory>
 
 class Fighter {
 	cocos2d::Sprite* _fighterSprite;
@@ -9,6 +14,12 @@ class Fighter {
 	float _positionY;
 	float _xOffset;
 	bool _fire;
+	float _nextShotTime;
+
+	void updatePosition(float ft);
+	void updateBullets(float ft);
+
+	std::list<std::shared_ptr<Bullet>> _bullets;
 
 public:
 	cocos2d::Node* create(const cocos2d::Size& visibleSize);
