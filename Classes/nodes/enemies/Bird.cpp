@@ -4,7 +4,7 @@ USING_NS_CC;
 
 #define BIRD_X_VELOCITY -50.f
 #define BIRD_Y_VELOCITY 40.f
-#define BIRD_MAX_HEIGHT 0.3f
+#define BIRD_MAX_HEIGHT 0.4f
 #define BIRD_MIN_HEIGHT 0.1f
 #define BIRD_MIN_TIME_CHANGE_DIRECTION 0.5f
 #define BIRD_MAX_TIME_CHANGE_DIRECTION 3.0f
@@ -21,14 +21,10 @@ void Bird::update(float dt)
 {
 	_changeDirectionTime -= dt;
 	if (_changeDirectionTime <= 0) {
-		float rnd = static_cast<float>(rand() % 1000) / 1000.f;
-		_changeDirectionTime =
-			BIRD_MIN_TIME_CHANGE_DIRECTION +
-			rnd * (BIRD_MAX_TIME_CHANGE_DIRECTION - BIRD_MIN_TIME_CHANGE_DIRECTION);
+		_changeDirectionTime = random(BIRD_MIN_TIME_CHANGE_DIRECTION, BIRD_MAX_TIME_CHANGE_DIRECTION);
 		int direction = rand() % 2 ? -1 : 1;
-		_velocity = Vec2(_velocity.x, direction * BIRD_Y_VELOCITY);
-		
 
+		_velocity = Vec2(_velocity.x, direction * BIRD_Y_VELOCITY);
 	}
 
 	_position += _velocity * dt;
@@ -55,13 +51,7 @@ bool Bird::isVisible()
 }
 
 void Bird::reset() {
-	float rnd = static_cast<float>(rand() % 1000) / 1000.f;
-	float randomHeight =
-		_visibleSize.height *
-			(
-				BIRD_MIN_HEIGHT +
-				(BIRD_MAX_HEIGHT - BIRD_MIN_HEIGHT) * rnd
-			);
+	float randomHeight = _visibleSize.height * random( BIRD_MIN_HEIGHT, BIRD_MAX_HEIGHT);
 
 	_position = Vec2(_visibleSize.width + _birdSprite->getContentSize().width / 2.f, randomHeight);
 	_birdSprite->setPosition(_position);
