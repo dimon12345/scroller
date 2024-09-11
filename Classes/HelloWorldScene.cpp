@@ -85,7 +85,6 @@ bool HelloWorld::init()
 
     _eventDispatcher->addEventListenerWithFixedPriority(_mouseListener, 1);
 
-
     reset();
 
     return true;

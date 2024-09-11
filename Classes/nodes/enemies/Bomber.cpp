@@ -8,7 +8,7 @@ cocos2d::Node* Bomber::create(const cocos2d::Size& visibleSize)
 
 	_sprite = Sprite::create("world\\bomber.png");
 	_sprite->setTag(44);
-	createCirclePhysicsBody(0.2f, 0xff, 0xf8);
+	createCirclePhysicsBody(0.3f, 0xff, 0xf8);
 	reset();
 	return _sprite;
 
