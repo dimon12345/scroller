@@ -50,8 +50,18 @@ void Fighter::reset() {
 
 bool Fighter::onContactBegin(PhysicsContact& contact)
 {
-    auto tagA = contact.getShapeA()->getBody()->getNode()->getTag();
-    auto tagB = contact.getShapeB()->getBody()->getNode()->getTag();
+    auto nodeA = contact.getShapeA()->getBody()->getNode();
+    if (nodeA == nullptr) {
+        return false;
+    }
+
+    auto nodeB = contact.getShapeB()->getBody()->getNode();
+    if (nodeB == nullptr) {
+        return false;
+    }
+
+    auto tagA = nodeA->getTag();
+    auto tagB = nodeB->getTag();
     if (tagA == tagB) {
         return false;
     }
