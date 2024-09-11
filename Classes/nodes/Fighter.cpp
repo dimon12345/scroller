@@ -141,6 +141,8 @@ void Fighter::updatePosition(float dt) {
         _positionY = _cursorY;
     }
 
+    _positionY = clampf(_positionY, 0, _visibleSize.height);
+
     _sprite->setPosition(Vec2(_xOffset, _positionY));
 }
 
