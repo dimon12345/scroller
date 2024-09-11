@@ -11,10 +11,8 @@ cocos2d::Node* Bomber::create(const cocos2d::Size& visibleSize)
 	_visibleSize = visibleSize;
 
 	_sprite = Sprite::create("world\\bomber.png");
-	auto body = PhysicsBody::createBox(_sprite->getContentSize());
-	body->setContactTestBitmask(0x2);
-	body->setDynamic(false);
-	_sprite->setPhysicsBody(body);
+	_sprite->setTag(44);
+	createCirclePhysicsBody(0.2f, 0xff, 0xf8);
 	reset();
 	return _sprite;
 

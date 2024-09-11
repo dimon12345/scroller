@@ -10,6 +10,9 @@
     <ClCompile Include="C:\pj\scroller\Classes\Entity.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\GameEngine.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Cloud.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
@@ -49,6 +52,12 @@
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\Entity.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\GameState.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\GameEngine.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h">

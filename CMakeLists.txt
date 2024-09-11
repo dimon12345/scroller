@@ -59,6 +59,7 @@ list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
      Classes/Entity.cpp
+     Classes/GameEngine.cpp
      Classes/nodes/Cloud.cpp
      Classes/nodes/Background.cpp
      Classes/nodes/Fighter.cpp
@@ -72,6 +73,8 @@ list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
      Classes/Entity.h
+     Classes/GameState.h
+     Classes/GameEngine.h
      Classes/nodes/Cloud.h
      Classes/nodes/Background.h
      Classes/nodes/Fighter.h

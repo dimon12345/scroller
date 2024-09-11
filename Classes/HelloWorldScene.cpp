@@ -26,18 +26,7 @@
 
 #include "nodes/EnemyFactory.h"
 
-//#include <utility>
-
 USING_NS_CC;
-
-#define NEXT_ENEMY_DELAY 1.0f
-#define NEXT_TIME_ADD_ENEMY 3.0f
-
-HelloWorld::HelloWorld()
-    : _fighter(_gameOver)
-{
-
-}
 
 Scene* HelloWorld::createScene()
 {
@@ -61,6 +50,7 @@ bool HelloWorld::init()
     this->addChild(bg, -2);
 
     scheduleUpdate();
+    _gameEngine = std::make_shared<GameEngine>();
 
     // button
     auto closeItem = MenuItemImage::create(
@@ -83,6 +73,7 @@ bool HelloWorld::init()
     this->addChild(_fighter.create(_visibleSize));
 
     // player events
+    _fighter.setGameEngine(_gameEngine);
     auto contactListener = EventListenerPhysicsContact::create();
     contactListener->onContactBegin = CC_CALLBACK_1(Fighter::onContactBegin, &_fighter);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
@@ -102,7 +93,7 @@ bool HelloWorld::init()
 
 void HelloWorld::update(float dt)
 {
-    if (_gameOver) {
+    if (_gameEngine->gameState.gameOver) {
         if (!_gameOverLabel) {
             _gameOverLabel = Label::createWithTTF("Game\nover!", "fonts/Marker Felt.ttf", 124);
             _gameOverLabel->setTextColor(Color4B(120, 12, 12, 255));
@@ -114,35 +105,21 @@ void HelloWorld::update(float dt)
     }
 
     _background.update(dt);
-
     _fighter.update(dt);
 
+    //_nextTimeAddEnemy -= dt;
+    //if (_nextTimeAddEnemy <= 0) {
+    //    _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
+    //    ++_maxEnemies;
+    //}
 
-    _nextTimeAddEnemy -= dt;
-    if (_nextTimeAddEnemy <= 0) {
-        _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
-        ++_maxEnemies;
-    }
-
-    _nextEnemyTime -= dt;
-    if (_nextEnemyTime <= 0 && (_enemies.size() < _maxEnemies)) {
-        _nextEnemyTime = NEXT_ENEMY_DELAY;
-        std::shared_ptr<Enemy> enemy(EnemyFactory::createEnemy());
-
-        auto sprite = enemy->create(_visibleSize);
-        this->addChild(sprite);
-
-        _enemies.push_back(enemy);
-    }
-
-    for (auto enemy : _enemies) {
-        enemy->update(dt);
-        if (!enemy->isVisible()) {
-            enemy->reset();
-        }
-    }
+    //_nextEnemyTime -= dt;
+    //if (_nextEnemyTime <= 0 && (_gameEngine->gameState.enemies.size() < _maxEnemies)) {
+    //    _nextEnemyTime = NEXT_ENEMY_DELAY;
+    //    _gameEngine->createEnemy(this, _visibleSize);
+    //}
+    _gameEngine->update(dt, this, _visibleSize);
 }
-
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
@@ -161,18 +138,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::reset()
 {
-    _nextEnemyTime = NEXT_ENEMY_DELAY;
-    _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
-    _maxEnemies = 1;
-    for (auto enemy : _enemies) {
-        this->removeChild(enemy->getNode());
-        enemy.reset();
-    }
-    _enemies.clear();
+    _gameEngine->reset();
 
     _fighter.reset();
 
-    _gameOver = false;
 
     if (_gameOverLabel) {
         this->removeChild(_gameOverLabel);

@@ -13,64 +13,78 @@ USING_NS_CC;
 #define FIGHTER_BREAK_ACCELERATION_RATE -400.f
 #define FIGHTER_ON_PLACE_EPSILON 2.f
 #define FIGHTER_NEXT_SHOT_TIME_INTERVAL 0.2f
+
 #define FIGHTER_NODE_TAG 33
-
-Fighter::Fighter(bool& gameOver)
-    : _gameOver(gameOver)
-{
-
-}
+#define ENEMY_NODE_TAG 44
 
 Node* Fighter::create(const cocos2d::Size& visibleSize)
 {
     _visibleSize = visibleSize;
     _positionY = _visibleSize.height / 2;
 
-    _fighterSprite = Sprite::create("world\\fighter.png");
-    _fighterSprite->setTag(FIGHTER_NODE_TAG);
-    auto body = PhysicsBody::createBox(_fighterSprite->getContentSize());
-    _fighterSprite->setPhysicsBody(body);
-    body->setContactTestBitmask(0xFFFFFFFF);
-    body->setDynamic(false);
+    _sprite = Sprite::create("world\\fighter.png");
+    _sprite->setTag(FIGHTER_NODE_TAG);
+    createCirclePhysicsBody(0.2f, 0x0f, 0x2);
 
     _xOffset = visibleSize.width * 0.3f;
-    _fighterSprite->setPosition(Vec2(_xOffset, _positionY));
+    _sprite->setPosition(Vec2(_xOffset, _positionY));
 
     reset();
 
-    return _fighterSprite;
+    return _sprite;
 }
+
+void Fighter::setGameEngine(std::shared_ptr<GameEngine> gameEngine)
+{
+    _gameEngine = gameEngine;
+}
+
 
 void Fighter::reset() {
     _fire = false;
     for (auto bullet: _bullets) {
-        _fighterSprite->getParent()->removeChild(bullet->getSprite());
+        _sprite->getParent()->removeChild(bullet->getNode());
     }
     _bullets.clear();
 }
 
 bool Fighter::onContactBegin(PhysicsContact& contact)
 {
-    //auto shapeA = contact.getShapeA();
-    //auto shapeB = contact.getShapeB();
-    //if ((shapeA->getCategoryBitmask() & shapeB->getCollisionBitmask()) == 0
-    //    || (shapeB->getCategoryBitmask() & shapeA->getCollisionBitmask()) == 0)
-    //{
-    //    return false;
-    //}
+    auto tagA = contact.getShapeA()->getBody()->getNode()->getTag();
+    auto tagB = contact.getShapeB()->getBody()->getNode()->getTag();
+    if (tagA == tagB) {
+        return false;
+    }
+
+    auto bitmaskA = contact.getShapeA()->getCategoryBitmask();
+    auto bitmaskB = contact.getShapeB()->getCategoryBitmask();
 
     if (contact.getShapeA()->getBody()->getNode()->getTag() == FIGHTER_NODE_TAG) {
-        _gameOver = true;
+        _gameEngine->gameOver();
         return true;
     }
 
     if (contact.getShapeB()->getBody()->getNode()->getTag() == FIGHTER_NODE_TAG) {
-        _gameOver = true;
+        _gameEngine->gameOver();
+        return true;
+    }
+
+    if (contact.getShapeA()->getBody()->getNode()->getTag() == 44) {
+        destroyEnemy(contact.getShapeA()->getBody()->getNode());
+        return true;
+    }
+
+    if (contact.getShapeB()->getBody()->getNode()->getTag() == 44) {
+        destroyEnemy(contact.getShapeA()->getBody()->getNode());
         return true;
     }
 
     return false;
+}
 
+void Fighter::destroyEnemy(Node *enemy)
+{
+    _gameEngine->destroyEnemy(enemy);
 }
 
 void Fighter::onMouseMove(Event* event)
@@ -118,7 +132,7 @@ void Fighter::updatePosition(float dt) {
         _positionY = _cursorY;
     }
 
-    _fighterSprite->setPosition(Vec2(_xOffset, _positionY));
+    _sprite->setPosition(Vec2(_xOffset, _positionY));
 }
 
 void Fighter::updateBullets(float dt) {
@@ -134,7 +148,7 @@ void Fighter::updateBullets(float dt) {
         std::back_inserter(result),
         [updated, this](std::shared_ptr<Bullet>& bullet) {
             if (!bullet->isVisible()) {
-                _fighterSprite->removeChild(bullet->getSprite(), true);
+                _sprite->removeChild(bullet->getNode(), true);
                 return false;
             }
             else return true;
@@ -156,6 +170,6 @@ void Fighter::updateBullets(float dt) {
         auto bullet = std::make_shared<Bullet>();
         _bullets.push_back(bullet);
         auto bulletSprite = bullet->create(_visibleSize, Vec2(_xOffset, _positionY));
-        _fighterSprite->getParent()->addChild(bulletSprite);
+        _sprite->getParent()->addChild(bulletSprite);
     }
 }

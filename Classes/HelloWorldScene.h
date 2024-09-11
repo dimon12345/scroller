@@ -28,6 +28,7 @@
 #include "nodes/Background.h"
 #include "nodes/Fighter.h"
 #include "nodes/Enemy.h"
+#include "GameEngine.h"
 
 #include "cocos2d.h"
 
@@ -35,20 +36,20 @@
 
 class HelloWorld : public cocos2d::Layer
 {
+    std::shared_ptr<GameEngine> _gameEngine;
+
     cocos2d::EventListenerMouse *_mouseListener = nullptr;
     cocos2d::Size _visibleSize;
     Background _background;
     Fighter _fighter;
-    bool _gameOver = false;
-    float _nextEnemyTime = 0;
-    float _nextTimeAddEnemy = 0;
-    std::list<std::shared_ptr<Enemy>> _enemies;
-    size_t _maxEnemies;
     cocos2d::Label* _gameOverLabel = nullptr;
+
+    //float _nextEnemyTime = 0;
+    //float _nextTimeAddEnemy = 0;
+    //size_t _maxEnemies;
 
     void reset();
 public:
-    HelloWorld();
     static cocos2d::Scene* createScene();
 
     virtual bool init();

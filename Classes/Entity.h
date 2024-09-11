@@ -6,9 +6,10 @@ class Entity
 {
 protected:
 	cocos2d::Size _visibleSize;
-	cocos2d::Vec2 _position;
-	cocos2d::Vec2 _velocity;
 	cocos2d::Node* _sprite;
+
+	void createCirclePhysicsBody(float scale, int contactTestBitmask, int categoryBitmask);
+
 public:
 	cocos2d::Node* getNode();
 	virtual ~Entity();

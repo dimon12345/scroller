@@ -7,8 +7,10 @@
 #include <list>
 #include <memory>
 
-class Fighter {
-	cocos2d::Sprite* _fighterSprite;
+#include "Entity.h"
+#include "GameEngine.h"
+
+class Fighter : public Entity {
 	cocos2d::Size _visibleSize;
 	float _cursorY;
 	float _positionY;
@@ -18,14 +20,15 @@ class Fighter {
 
 	void updatePosition(float ft);
 	void updateBullets(float ft);
+	void destroyEnemy(cocos2d::Node* enemy);
 
 	std::list<std::shared_ptr<Bullet>> _bullets;
 
-	bool& _gameOver;
+	std::shared_ptr<GameEngine> _gameEngine;
 
 public:
-	Fighter(bool& gameOver);
 	cocos2d::Node* create(const cocos2d::Size& visibleSize);
+	void setGameEngine(std::shared_ptr<GameEngine> gameEngine);
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	void onMouseMove(cocos2d::Event* event);
 	void onMouseDown(cocos2d::Event* event);

@@ -823,6 +823,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\AppDelegate.h" />
     <ClInclude Include="C:\pj\scroller\Classes\HelloWorldScene.h" />
     <ClInclude Include="C:\pj\scroller\Classes\Entity.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\GameState.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\GameEngine.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Fighter.h" />
@@ -837,6 +839,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\pj\scroller\Classes\AppDelegate.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\Entity.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\GameEngine.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Cloud.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Fighter.cpp" />

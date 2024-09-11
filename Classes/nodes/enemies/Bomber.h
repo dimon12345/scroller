@@ -1,10 +1,10 @@
 #pragma once
 
 #include "nodes/Enemy.h"
+#include "GameEngine.h"
 
 class Bomber : public Enemy {
 protected:
-	cocos2d::Size _visibleSize;
 	cocos2d::Vec2 _position;
 	cocos2d::Vec2 _velocity;
 

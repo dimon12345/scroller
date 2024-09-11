@@ -15,10 +15,7 @@ cocos2d::Node* Bird:: create(const cocos2d::Size& visibleSize) {
 	_visibleSize = visibleSize;
 
 	_sprite = Sprite::create("world\\bird.png");
-	auto body = PhysicsBody::createBox(_sprite->getContentSize());
-	body->setContactTestBitmask(0x1);
-	body->setDynamic(false);
-	_sprite->setPhysicsBody(body);
+	createCirclePhysicsBody(0.5f, 0x0f, 0x1);
 	reset();
 	return _sprite;
 }
