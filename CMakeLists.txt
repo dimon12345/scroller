@@ -58,21 +58,29 @@ endif()
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
+     Classes/Entity.cpp
+     Classes/nodes/Cloud.cpp
      Classes/nodes/Background.cpp
      Classes/nodes/Fighter.cpp
      Classes/nodes/Bullet.cpp
      Classes/nodes/EnemyFactory.cpp
      Classes/nodes/enemies/Bird.cpp
+     Classes/nodes/enemies/Bomber.cpp
+     Classes/nodes/enemies/FastBomber.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
+     Classes/Entity.h
+     Classes/nodes/Cloud.h
      Classes/nodes/Background.h
      Classes/nodes/Fighter.h
      Classes/nodes/Bullet.h
      Classes/nodes/Enemy.h
      Classes/nodes/EnemyFactory.h
      Classes/nodes/enemies/Bird.h
+     Classes/nodes/enemies/Bomber.h
+     Classes/nodes/enemies/FastBomber.h
      )
 
 if(ANDROID)

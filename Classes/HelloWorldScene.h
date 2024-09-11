@@ -36,9 +36,8 @@
 class HelloWorld : public cocos2d::Layer
 {
     cocos2d::EventListenerMouse *_mouseListener = nullptr;
-    const static int CLOUNDS_COUNT = 30;
     cocos2d::Size _visibleSize;
-    Background _backgrounds[CLOUNDS_COUNT];
+    Background _background;
     Fighter _fighter;
     bool _gameOver = false;
     float _nextEnemyTime = 0;
@@ -46,6 +45,8 @@ class HelloWorld : public cocos2d::Layer
     std::list<std::shared_ptr<Enemy>> _enemies;
     size_t _maxEnemies;
     cocos2d::Label* _gameOverLabel = nullptr;
+
+    void reset();
 public:
     HelloWorld();
     static cocos2d::Scene* createScene();

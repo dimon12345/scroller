@@ -2,7 +2,9 @@
 
 #include "cocos2d.h"
 
-class Enemy {
+#include "Entity.h"
+
+class Enemy : public Entity {
 public:
 	virtual cocos2d::Node* create(const cocos2d::Size& visibleSize) = 0;
 	virtual void update(float dt) = 0;

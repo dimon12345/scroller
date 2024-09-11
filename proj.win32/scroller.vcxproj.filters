@@ -7,6 +7,12 @@
     <ClCompile Include="C:\pj\scroller\Classes\HelloWorldScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\Entity.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\Cloud.cpp">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
@@ -22,6 +28,12 @@
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bird.cpp">
       <Filter>Source Files\Classes\nodes\enemies</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bomber.cpp">
+      <Filter>Source Files\Classes\nodes\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\FastBomber.cpp">
+      <Filter>Source Files\Classes\nodes\enemies</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
@@ -35,6 +47,12 @@
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\HelloWorldScene.h">
       <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\Entity.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h">
+      <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h">
       <Filter>Source Files\Classes\nodes</Filter>
@@ -52,6 +70,12 @@
       <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bird.h">
+      <Filter>Source Files\Classes\nodes\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bomber.h">
+      <Filter>Source Files\Classes\nodes\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\FastBomber.h">
       <Filter>Source Files\Classes\nodes\enemies</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\proj.win32\main.h">
@@ -79,6 +103,9 @@
       <Filter>Resources\res</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Resources\world\bird.png">
+      <Filter>Resources\world</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Resources\world\bomber.png">
       <Filter>Resources\world</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Resources\world\bullet.png">

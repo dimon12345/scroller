@@ -31,4 +31,5 @@ public:
 	void onMouseDown(cocos2d::Event* event);
 	void onMouseUp(cocos2d::Event* event);
 	void update(float dt);
+	void reset();
 };

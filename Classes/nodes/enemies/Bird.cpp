@@ -14,13 +14,13 @@ USING_NS_CC;
 cocos2d::Node* Bird:: create(const cocos2d::Size& visibleSize) {
 	_visibleSize = visibleSize;
 
-	_birdSprite = Sprite::create("world\\bird.png");
-	auto body = PhysicsBody::createBox(_birdSprite->getContentSize());
+	_sprite = Sprite::create("world\\bird.png");
+	auto body = PhysicsBody::createBox(_sprite->getContentSize());
 	body->setContactTestBitmask(0x1);
 	body->setDynamic(false);
-	_birdSprite->setPhysicsBody(body);
+	_sprite->setPhysicsBody(body);
 	reset();
-	return _birdSprite;
+	return _sprite;
 }
 
 void Bird::update(float dt)
@@ -45,12 +45,12 @@ void Bird::update(float dt)
 		_position = Vec2(_position.x, _visibleSize.height * BIRD_MIN_HEIGHT);
 	}
 
-	_birdSprite->setPosition(_position);
+	_sprite->setPosition(_position);
 }
 
 bool Bird::isVisible()
 {
-	if (_position.x + _birdSprite->getContentSize().width < 0) {
+	if (_position.x + _sprite->getContentSize().width < 0) {
 		return false;
 	}
 
@@ -60,7 +60,7 @@ bool Bird::isVisible()
 void Bird::reset() {
 	float randomHeight = _visibleSize.height * random( BIRD_MIN_HEIGHT, BIRD_MAX_HEIGHT);
 
-	_position = Vec2(_visibleSize.width + _birdSprite->getContentSize().width / 2.f, randomHeight);
-	_birdSprite->setPosition(_position);
+	_position = Vec2(_visibleSize.width + _sprite->getContentSize().width / 2.f, randomHeight);
+	_sprite->setPosition(_position);
 	_changeDirectionTime = 0;
 }

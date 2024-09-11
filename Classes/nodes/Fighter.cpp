@@ -36,9 +36,17 @@ Node* Fighter::create(const cocos2d::Size& visibleSize)
     _xOffset = visibleSize.width * 0.3f;
     _fighterSprite->setPosition(Vec2(_xOffset, _positionY));
 
-    _fire = false;
+    reset();
 
     return _fighterSprite;
+}
+
+void Fighter::reset() {
+    _fire = false;
+    for (auto bullet: _bullets) {
+        _fighterSprite->getParent()->removeChild(bullet->getSprite());
+    }
+    _bullets.clear();
 }
 
 bool Fighter::onContactBegin(PhysicsContact& contact)

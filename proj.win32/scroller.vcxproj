@@ -822,21 +822,29 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClInclude Include="C:\pj\scroller\Classes\AppDelegate.h" />
     <ClInclude Include="C:\pj\scroller\Classes\HelloWorldScene.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\Entity.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Fighter.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Enemy.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\EnemyFactory.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bird.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bomber.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\FastBomber.h" />
     <ClInclude Include="C:\pj\scroller\proj.win32\main.h" />
     <ClInclude Include="C:\pj\scroller\proj.win32\resource.h" />
     <ClCompile Include="C:\pj\scroller\Classes\AppDelegate.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\Entity.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\Cloud.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Fighter.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\EnemyFactory.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bird.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bomber.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\FastBomber.cpp" />
     <ClCompile Include="C:\pj\scroller\proj.win32\main.cpp" />
     <ResourceCompile Include="C:\pj\scroller\proj.win32\game.rc" />
     <ClInclude Include="C:\pj\scroller\Resources\CloseNormal.png" />
@@ -846,6 +854,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Resources\fonts\arial.ttf" />
     <ClInclude Include="C:\pj\scroller\Resources\res\.gitkeep" />
     <ClInclude Include="C:\pj\scroller\Resources\world\bird.png" />
+    <ClInclude Include="C:\pj\scroller\Resources\world\bomber.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\bullet.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\cloud.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\fighter.png" />

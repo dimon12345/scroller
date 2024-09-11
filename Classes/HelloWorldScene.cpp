@@ -47,24 +47,12 @@ Scene* HelloWorld::createScene()
     return scene;
 }
 
-// Print useful error message instead of segfaulting when files are not there.
-static void problemLoading(const char* filename)
-{
-    printf("Error while loading: %s\n", filename);
-    printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
-}
-
-// on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !Layer::init() )
     {
         return false;
     }
-
-    _gameOver = false;
 
     _visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -72,41 +60,29 @@ bool HelloWorld::init()
     auto bg = LayerColor::create(Color4B(136, 210, 242, 255));
     this->addChild(bg, -2);
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
+    scheduleUpdate();
 
-    // add a "close" icon to exit the progress. it's an autorelease object
+    // button
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
 
-    if (closeItem == nullptr ||
-        closeItem->getContentSize().width <= 0 ||
-        closeItem->getContentSize().height <= 0)
-    {
-        problemLoading("'CloseNormal.png' and 'CloseSelected.png'");
-    }
-    else
-    {
-        float x = origin.x + _visibleSize.width - closeItem->getContentSize().width/2;
-        float y = origin.y + closeItem->getContentSize().height/2;
-        closeItem->setPosition(Vec2(x,y));
-    }
+    float x = origin.x + _visibleSize.width - closeItem->getContentSize().width/2;
+    float y = origin.y + closeItem->getContentSize().height/2;
+    closeItem->setPosition(Vec2(x,y));
 
-    // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
-    for (int i = 0; i < CLOUNDS_COUNT; ++i) {
-        auto cloudSprite = _backgrounds[i].create(_visibleSize);
-        this->addChild(cloudSprite, -1);
-    }
+    // background
+    auto backgroundNode = _background.create(_visibleSize);
+    this->addChild(backgroundNode, -1);
 
     this->addChild(_fighter.create(_visibleSize));
 
+    // player events
     auto contactListener = EventListenerPhysicsContact::create();
     contactListener->onContactBegin = CC_CALLBACK_1(Fighter::onContactBegin, &_fighter);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
@@ -118,11 +94,8 @@ bool HelloWorld::init()
 
     _eventDispatcher->addEventListenerWithFixedPriority(_mouseListener, 1);
 
-    scheduleUpdate();
 
-    _nextEnemyTime = NEXT_ENEMY_DELAY;
-    _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
-    _maxEnemies = 1;
+    reset();
 
     return true;
 }
@@ -135,15 +108,12 @@ void HelloWorld::update(float dt)
             _gameOverLabel->setTextColor(Color4B(120, 12, 12, 255));
             _gameOverLabel->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2));
             this->addChild(_gameOverLabel, 1);
-
-            for (auto cloud : _backgrounds) {
-                cloud.stop();
-            }
-            
         }
 
         return;
     }
+
+    _background.update(dt);
 
     _fighter.update(dt);
 
@@ -177,7 +147,7 @@ void HelloWorld::update(float dt)
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
     //Close the cocos2d-x game scene and quit the application
-    Director::getInstance()->end();
+    //Director::getInstance()->end();
 
     /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
 
@@ -185,4 +155,29 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //_eventDispatcher->dispatchEvent(&customEndEvent);
 
 
+    reset();
+
+}
+
+void HelloWorld::reset()
+{
+    _nextEnemyTime = NEXT_ENEMY_DELAY;
+    _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
+    _maxEnemies = 1;
+    for (auto enemy : _enemies) {
+        this->removeChild(enemy->getNode());
+        enemy.reset();
+    }
+    _enemies.clear();
+
+    _fighter.reset();
+
+    _gameOver = false;
+
+    if (_gameOverLabel) {
+        this->removeChild(_gameOverLabel);
+        _gameOverLabel = nullptr;
+    }
+
+    _background.restartClouds(true);
 }
