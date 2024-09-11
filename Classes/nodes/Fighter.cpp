@@ -12,7 +12,7 @@ USING_NS_CC;
 #define FIGHTER_STOP_DISTANCE 10.f
 #define FIGHTER_BREAK_ACCELERATION_RATE -400.f
 #define FIGHTER_ON_PLACE_EPSILON 2.f
-#define FIGHTER_NEXT_SHOT_TIME_INTERVAL 0.2f
+#define FIGHTER_NEXT_SHOT_TIME_INTERVAL 0.3f
 
 #define FIGHTER_NODE_TAG 33
 #define ENEMY_NODE_TAG 44
@@ -108,7 +108,6 @@ void Fighter::onMouseDown(Event* event)
     EventMouse* e = (EventMouse*)event;
     if (e->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT) {
         _fire = true;
-        _nextShotTime = 0;
     }
 }
 
@@ -169,11 +168,11 @@ void Fighter::updateBullets(float dt) {
         _bullets = result;
     }
 
+    _nextShotTime -= dt;
+
     if (!_fire) {
         return;
     }
-
-    _nextShotTime -= dt;
 
     if (_nextShotTime < 0) {
         _nextShotTime = FIGHTER_NEXT_SHOT_TIME_INTERVAL;
