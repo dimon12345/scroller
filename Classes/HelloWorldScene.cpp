@@ -100,39 +100,46 @@ void HelloWorld::update(float dt)
             this->addChild(_gameOverLabel, 1);
         }
 
+        if (!_restartButton) {
+            auto restartLabel = Label::createWithTTF("Restart", "fonts/Marker Felt.ttf", 124);
+            restartLabel->setColor(Color3B(54, 105, 13));
+            auto restartItem= MenuItemLabel::create(restartLabel, CC_CALLBACK_1(HelloWorld::restartGameButtonPressed, this));
+
+            float padding = 0.0f;
+            float yPosition = _visibleSize.height / 2.f - padding - restartLabel->getContentSize().width / 2.f;
+            restartItem->setPosition(Vec2(_visibleSize.width / 2, yPosition));
+
+            //auto restartItem = MenuItemImage::create(
+            //    "CloseNormal.png",
+            //    "CloseSelected.png",
+            //    CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+
+            //float x = _visibleSize.width - restartItem->getContentSize().width / 2;
+            //float y = restartItem->getContentSize().height / 2;
+            //restartItem->setPosition(Vec2(x, y));
+
+            _restartButton = Menu::create(restartItem, NULL);
+            _restartButton->setPosition(Vec2::ZERO);
+            this->addChild(_restartButton, 1);
+        }
+
         return;
     }
 
     _background.update(dt);
     _fighter.update(dt);
 
-    //_nextTimeAddEnemy -= dt;
-    //if (_nextTimeAddEnemy <= 0) {
-    //    _nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
-    //    ++_maxEnemies;
-    //}
-
-    //_nextEnemyTime -= dt;
-    //if (_nextEnemyTime <= 0 && (_gameEngine->gameState.enemies.size() < _maxEnemies)) {
-    //    _nextEnemyTime = NEXT_ENEMY_DELAY;
-    //    _gameEngine->createEnemy(this, _visibleSize);
-    //}
     _gameEngine->update(dt, this, _visibleSize);
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
-    //Close the cocos2d-x game scene and quit the application
-    //Director::getInstance()->end();
+        Director::getInstance()->end();
+}
 
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() as given above,instead trigger a custom event created in RootViewController.mm as below*/
-
-    //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
-
-
+void HelloWorld::restartGameButtonPressed(Ref* pSender)
+{
     reset();
-
 }
 
 void HelloWorld::reset()
@@ -141,10 +148,14 @@ void HelloWorld::reset()
 
     _fighter.reset();
 
-
     if (_gameOverLabel) {
         this->removeChild(_gameOverLabel);
         _gameOverLabel = nullptr;
+    }
+
+    if (_restartButton) {
+        this->removeChild(_restartButton);
+        _restartButton = nullptr;
     }
 
     _background.restartClouds(true);

@@ -43,6 +43,8 @@ class HelloWorld : public cocos2d::Layer
     Background _background;
     Fighter _fighter;
     cocos2d::Label* _gameOverLabel = nullptr;
+    cocos2d::Menu* _restartButton = nullptr;
+
 
     void reset();
 public:
@@ -51,6 +53,7 @@ public:
     virtual bool init();
     
     void menuCloseCallback(cocos2d::Ref* pSender);
+    void restartGameButtonPressed(cocos2d::Ref* pSender);
     void update(float dt);
 
     CREATE_FUNC(HelloWorld);

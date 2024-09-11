@@ -4,6 +4,7 @@
 #include <memory>
 
 class Enemy;
+namespace cocos2x { class Node; }
 
 struct GameState {
 	std::list<std::shared_ptr<Enemy>> enemies;
