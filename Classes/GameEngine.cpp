@@ -1,6 +1,7 @@
 #include "GameEngine.h"
 
 #include "nodes/EnemyFactory.h"
+#include "nodes/Enemy.h"
 
 USING_NS_CC;
 

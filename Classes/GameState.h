@@ -1,6 +1,9 @@
 #pragma once
 
-#include "nodes/Enemy.h"
+#include <list>
+#include <memory>
+
+class Enemy;
 
 struct GameState {
 	std::list<std::shared_ptr<Enemy>> enemies;

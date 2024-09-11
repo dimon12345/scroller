@@ -2,10 +2,6 @@
 
 USING_NS_CC;
 
-#define BOMBER_SLOW_MAX_HEIGHT 7.f
-#define BOMBER_SLOW_MIN_HEIGHT 0.4f
-#define BOMBER_SLOW_VELOCITY 100.f
-
 cocos2d::Node* Bomber::create(const cocos2d::Size& visibleSize)
 {
 	_visibleSize = visibleSize;

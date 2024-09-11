@@ -834,6 +834,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bird.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bomber.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\FastBomber.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\SlowBomber.h" />
     <ClInclude Include="C:\pj\scroller\proj.win32\main.h" />
     <ClInclude Include="C:\pj\scroller\proj.win32\resource.h" />
     <ClCompile Include="C:\pj\scroller\Classes\AppDelegate.cpp" />
@@ -848,6 +849,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bird.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bomber.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\FastBomber.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\SlowBomber.cpp" />
     <ClCompile Include="C:\pj\scroller\proj.win32\main.cpp" />
     <ResourceCompile Include="C:\pj\scroller\proj.win32\game.rc" />
     <ClInclude Include="C:\pj\scroller\Resources\CloseNormal.png" />

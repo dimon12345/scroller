@@ -44,21 +44,15 @@ class HelloWorld : public cocos2d::Layer
     Fighter _fighter;
     cocos2d::Label* _gameOverLabel = nullptr;
 
-    //float _nextEnemyTime = 0;
-    //float _nextTimeAddEnemy = 0;
-    //size_t _maxEnemies;
-
     void reset();
 public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
     
-    // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     void update(float dt);
 
-    // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };
 
