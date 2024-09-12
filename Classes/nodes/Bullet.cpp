@@ -12,7 +12,7 @@ Node* Bullet::create(const cocos2d::Size& visibleSize, const Vec2 &position)
 
     _sprite = Sprite::create("world\\bullet.png");
     _sprite->setPosition(position);
-    createCirclePhysicsBody(0.5f, 0xf0, 0x4);
+    createCirclePhysicsBody(0.7f, 0xf0, 0x4);
     return _sprite;
 }
 

@@ -44,6 +44,10 @@ class HelloWorld : public cocos2d::Layer
     Fighter _fighter;
     cocos2d::Label* _gameOverLabel = nullptr;
     cocos2d::Menu* _restartButton = nullptr;
+    int _oldScore = 0;
+    cocos2d::Label* _score = nullptr;
+    float _scoreXOffset = 0.f;
+    float _scoreY = 0.f;
 
 
     void reset();

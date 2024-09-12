@@ -7,7 +7,6 @@
 USING_NS_CC;
 
 Enemy* EnemyFactory::createEnemy() {
-	log("create enemy");
 	float rnd = random(0.0f, 1.f);
 
 	if (rnd < 0.33f) {

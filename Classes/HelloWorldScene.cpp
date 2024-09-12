@@ -72,6 +72,32 @@ bool HelloWorld::init()
 
     this->addChild(_fighter.create(_visibleSize));
 
+    // score
+
+    auto scoreLabel = Label::createWithTTF("Score:", "fonts/Marker Felt.ttf", 30);
+    scoreLabel->setColor(Color3B(54, 105, 13));
+    _scoreY = _visibleSize.height - 30 - scoreLabel->getContentSize().height;
+    _scoreXOffset = 30 + scoreLabel->getContentSize().width / 2;
+    scoreLabel->setPosition(
+        Vec2(
+            _scoreXOffset,
+            _scoreY
+        )
+    );
+    this->addChild(scoreLabel);
+    _scoreXOffset += scoreLabel->getContentSize().width / 2 + 30;
+
+    _score = Label::createWithTTF("0", "fonts/Marker Felt.ttf", 30);
+    _oldScore = 0;
+    _score->setColor(Color3B(34, 85, 7));
+    _score->setPosition(
+        Vec2(
+            _scoreXOffset + _score->getContentSize().width /2,
+            _scoreY
+        )
+    );
+    this->addChild(_score);
+
     // player events
     _fighter.setGameEngine(_gameEngine);
     auto contactListener = EventListenerPhysicsContact::create();
@@ -109,15 +135,6 @@ void HelloWorld::update(float dt)
             float yPosition = _visibleSize.height / 2.f - padding - restartLabel->getContentSize().width / 2.f;
             restartItem->setPosition(Vec2(_visibleSize.width / 2, yPosition));
 
-            //auto restartItem = MenuItemImage::create(
-            //    "CloseNormal.png",
-            //    "CloseSelected.png",
-            //    CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
-
-            //float x = _visibleSize.width - restartItem->getContentSize().width / 2;
-            //float y = restartItem->getContentSize().height / 2;
-            //restartItem->setPosition(Vec2(x, y));
-
             _restartButton = Menu::create(restartItem, NULL);
             _restartButton->setPosition(Vec2::ZERO);
             this->addChild(_restartButton, 1);
@@ -130,6 +147,20 @@ void HelloWorld::update(float dt)
     _fighter.update(dt);
 
     _gameEngine->update(dt, this, _visibleSize);
+
+    if (_oldScore != _gameEngine->gameState.score) {
+        _oldScore = _gameEngine->gameState.score;
+        char buf[30];
+        _itoa(_oldScore, buf, 10);
+        _score->setString(buf);
+
+        _score->setPosition(
+            Vec2(
+                _scoreXOffset + _score->getContentSize().width / 2,
+                _scoreY
+            )
+        );
+    }
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

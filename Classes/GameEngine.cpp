@@ -36,6 +36,7 @@ void GameEngine::destroyEnemy(Node* node)
 		auto node = enemy->get()->getNode();
 		node->getParent()->removeChild(node, true);
 		_gameState.enemies.erase(enemy);
+		_gameState.score += 100;
 	}
 }
 
@@ -64,6 +65,7 @@ void GameEngine::update(float dt, Node *scene, const Size &visibleSize)
 void GameEngine::reset()
 {
 	_gameState.gameOver = false;
+	_gameState.score = 0;
 
 	_gameState.nextEnemyTime = NEXT_ENEMY_DELAY;
 	_gameState.nextTimeAddEnemy = NEXT_TIME_ADD_ENEMY;
