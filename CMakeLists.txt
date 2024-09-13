@@ -69,6 +69,7 @@ list(APPEND GAME_SOURCE
      Classes/nodes/enemies/Bomber.cpp
      Classes/nodes/enemies/FastBomber.cpp
      Classes/nodes/enemies/SlowBomber.cpp
+     Classes/nodes/enemies/Interceptor.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -86,6 +87,7 @@ list(APPEND GAME_HEADER
      Classes/nodes/enemies/Bomber.h
      Classes/nodes/enemies/FastBomber.h
      Classes/nodes/enemies/SlowBomber.h
+     Classes/nodes/enemies/Interceptor.h
      )
 
 if(ANDROID)

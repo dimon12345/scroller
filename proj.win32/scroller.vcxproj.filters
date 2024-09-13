@@ -40,6 +40,9 @@
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\SlowBomber.cpp">
       <Filter>Source Files\Classes\nodes\enemies</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Interceptor.cpp">
+      <Filter>Source Files\Classes\nodes\enemies</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
@@ -93,6 +96,9 @@
     <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\SlowBomber.h">
       <Filter>Source Files\Classes\nodes\enemies</Filter>
     </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Interceptor.h">
+      <Filter>Source Files\Classes\nodes\enemies</Filter>
+    </ClInclude>
     <ClInclude Include="C:\pj\scroller\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
@@ -130,6 +136,12 @@
       <Filter>Resources\world</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Resources\world\fighter.png">
+      <Filter>Resources\world</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Resources\world\interceptor.png">
+      <Filter>Resources\world</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Resources\world\meteor.png">
       <Filter>Resources\world</Filter>
     </ClInclude>
   </ItemGroup>

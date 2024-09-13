@@ -5,11 +5,11 @@
 
 USING_NS_CC;
 
-#define NEXT_ENEMY_DELAY 1.f
-#define NEXT_TIME_ADD_ENEMY 3.f
+//#define NEXT_ENEMY_DELAY 1.f
+//#define NEXT_TIME_ADD_ENEMY 3.f
 
-//#define NEXT_ENEMY_DELAY 0.05f
-//#define NEXT_TIME_ADD_ENEMY 1.0f
+#define NEXT_ENEMY_DELAY 0.05f
+#define NEXT_TIME_ADD_ENEMY 1.0f
 
 GameEngine::GameEngine()
 	: gameState(_gameState)
