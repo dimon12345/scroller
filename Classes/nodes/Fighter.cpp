@@ -80,21 +80,18 @@ bool Fighter::onContactBegin(PhysicsContact& contact)
     }
 
     if (contact.getShapeA()->getBody()->getNode()->getTag() == 44) {
-        destroyEnemy(contact.getShapeA()->getBody()->getNode());
+        auto body = contact.getShapeA()->getBody();
+        _gameEngine->killEnemy(body->getNode());
         return true;
     }
 
     if (contact.getShapeB()->getBody()->getNode()->getTag() == 44) {
-        destroyEnemy(contact.getShapeA()->getBody()->getNode());
+        auto body = contact.getShapeB()->getBody();
+        _gameEngine->killEnemy(body->getNode());
         return true;
     }
 
     return false;
-}
-
-void Fighter::destroyEnemy(Node *enemy)
-{
-    _gameEngine->destroyEnemy(enemy);
 }
 
 void Fighter::onMouseMove(Event* event)
@@ -159,7 +156,8 @@ void Fighter::updateBullets(float dt) {
         std::back_inserter(result),
         [updated, this](std::shared_ptr<Bullet>& bullet) {
             if (!bullet->isVisible()) {
-                _sprite->removeChild(bullet->getNode(), true);
+                auto node = bullet->getNode();
+                node->getParent()->removeChild(bullet->getNode(), true);
                 return false;
             }
             else return true;

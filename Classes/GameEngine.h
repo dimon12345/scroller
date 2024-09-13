@@ -12,7 +12,7 @@ public:
 	const GameState &gameState;
 
 	void createEnemy(cocos2d::Node* scene, const cocos2d::Size& visibleSize);
-	void destroyEnemy(cocos2d::Node *node);
+	void killEnemy(cocos2d::Node *node);
 
 	void update(float dt, cocos2d::Node *scene, const cocos2d::Size& visibleSize);
 	void reset();

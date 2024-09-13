@@ -5,9 +5,11 @@
 
 USING_NS_CC;
 
-#define NEXT_ENEMY_DELAY 1.0f
-#define NEXT_TIME_ADD_ENEMY 3.0f
+#define NEXT_ENEMY_DELAY 1.f
+#define NEXT_TIME_ADD_ENEMY 3.f
 
+//#define NEXT_ENEMY_DELAY 0.05f
+//#define NEXT_TIME_ADD_ENEMY 1.0f
 
 GameEngine::GameEngine()
 	: gameState(_gameState)
@@ -24,7 +26,7 @@ void GameEngine::createEnemy(Node* scene, const Size &visibleSize)
 	_gameState.enemies.push_back(enemy);
 }
 
-void GameEngine::destroyEnemy(Node* node)
+void GameEngine::killEnemy(Node* node)
 {
 	auto enemy = find_if(
 		_gameState.enemies.begin(),
@@ -54,10 +56,15 @@ void GameEngine::update(float dt, Node *scene, const Size &visibleSize)
 		createEnemy(scene, visibleSize);
 	}
 
-	for (auto enemy : _gameState.enemies) {
-		enemy->update(dt);
-		if (!enemy->isVisible()) {
-			enemy->reset();
+	for (auto enemyIt = _gameState.enemies.begin(); enemyIt != _gameState.enemies.end(); ++enemyIt) {
+		(*enemyIt)->update(dt);
+		if (!(*enemyIt)->isVisible()) {
+			auto node = (*enemyIt)->getNode();
+			node->getParent()->removeChild(node, true);
+			_gameState.enemies.erase(enemyIt);
+			_gameState.nextEnemyTime = NEXT_ENEMY_DELAY;
+			createEnemy(scene, visibleSize);
+			break;
 		}
 	}
 }
