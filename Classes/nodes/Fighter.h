@@ -24,11 +24,8 @@ class Fighter : public Entity {
 
 	std::list<std::shared_ptr<Bullet>> _bullets;
 
-	std::shared_ptr<GameEngine> _gameEngine;
-
 public:
 	cocos2d::Node* create(const cocos2d::Size& visibleSize);
-	void setGameEngine(std::shared_ptr<GameEngine> gameEngine);
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	void onMouseMove(cocos2d::Event* event);
 	void onMouseDown(cocos2d::Event* event);

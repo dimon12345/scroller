@@ -1,5 +1,7 @@
 #include "Bomber.h"
 
+#include "CollisionBitmask.h"
+
 USING_NS_CC;
 
 cocos2d::Node* Bomber::create(const cocos2d::Size& visibleSize)
@@ -9,7 +11,11 @@ cocos2d::Node* Bomber::create(const cocos2d::Size& visibleSize)
 	_sprite = Sprite::create("world\\bomber.png");
 	_position = Vec2(_visibleSize.width + _sprite->getContentSize().width / 2.f, 0);
 	_sprite->setTag(44);
-	createCirclePhysicsBody(0.3f, 0xff, 0xf8);
+	createCirclePhysicsBody(
+		0.3f,
+		CollisionBitmask::BOMBER,
+		CollisionBitmask::FIGHTER | CollisionBitmask::METEOR | CollisionBitmask::BULLET
+	);
 	reset();
 	return _sprite;
 }

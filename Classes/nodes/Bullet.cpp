@@ -1,5 +1,7 @@
 #include "Bullet.h"
 
+#include "CollisionBitmask.h"
+
 USING_NS_CC;
 
 #define BULLET_X_VELOCITY 150.f
@@ -13,7 +15,10 @@ Node* Bullet::create(const cocos2d::Size& visibleSize, const Vec2 &position, flo
 
     _sprite = Sprite::create("world\\bullet.png");
     _sprite->setPosition(position);
-    createCirclePhysicsBody(0.7f, 0xf0, 0x4);
+    createCirclePhysicsBody(
+        0.4f,
+        CollisionBitmask::BULLET,
+        CollisionBitmask::BOMBER | CollisionBitmask::INTERCEPTOR);
     return _sprite;
 }
 

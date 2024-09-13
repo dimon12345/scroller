@@ -1,5 +1,6 @@
 #include "Bird.h"
 
+#include "CollisionBitmask.h"
 USING_NS_CC;
 
 #define BIRD_X_MAX_VELOCITY -160.f
@@ -15,7 +16,11 @@ cocos2d::Node* Bird:: create(const cocos2d::Size& visibleSize) {
 	_visibleSize = visibleSize;
 
 	_sprite = Sprite::create("world\\bird.png");
-	createCirclePhysicsBody(0.5f, 0x0f, 0x1);
+	createCirclePhysicsBody(
+		0.5f,
+		CollisionBitmask::BIRD,
+		CollisionBitmask::FIGHTER
+	);
 	reset();
 	return _sprite;
 }

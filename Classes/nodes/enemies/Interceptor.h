@@ -2,15 +2,22 @@
 
 #include "nodes/Enemy.h"
 
+
 #include "cocos2d.h"
+
+class GameEngine;
+class EnemyBullet;
 
 class Interceptor : public Enemy
 {
 protected:
 	cocos2d::Vec2 _position;
 	cocos2d::Vec2 _velocity;
+	float _nextShotTime;
+	void fire();
 
 public:
+	~Interceptor();
 	virtual cocos2d::Node* create(const cocos2d::Size& visibleSize);
 	virtual void update(float dt);
 	virtual bool isVisible();

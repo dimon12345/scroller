@@ -831,6 +831,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Foreground.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Fighter.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\EnemyBullet.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Meteor.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Enemy.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\EnemyFactory.h" />
@@ -851,6 +852,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Foreground.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Fighter.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\EnemyBullet.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Meteor.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\EnemyFactory.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bird.cpp" />
@@ -870,6 +872,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Resources\world\bomber.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\bullet.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\cloud.png" />
+    <ClInclude Include="C:\pj\scroller\Resources\world\enemy_bullet.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\fighter.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\interceptor.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\land.png" />

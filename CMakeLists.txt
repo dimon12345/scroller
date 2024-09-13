@@ -66,6 +66,7 @@ list(APPEND GAME_SOURCE
      Classes/nodes/Foreground.cpp
      Classes/nodes/Fighter.cpp
      Classes/nodes/Bullet.cpp
+     Classes/nodes/EnemyBullet.cpp
      Classes/nodes/Meteor.cpp
      Classes/nodes/EnemyFactory.cpp
      Classes/nodes/enemies/Bird.cpp
@@ -86,6 +87,7 @@ list(APPEND GAME_HEADER
      Classes/nodes/Foreground.h
      Classes/nodes/Fighter.h
      Classes/nodes/Bullet.h
+     Classes/nodes/EnemyBullet.h
      Classes/nodes/Meteor.h
      Classes/nodes/Enemy.h
      Classes/nodes/EnemyFactory.h

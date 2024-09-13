@@ -1,6 +1,7 @@
 #include "Fighter.h"
 
 #include "Bullet.h"
+#include "CollisionBitmask.h"
 
 #include <iostream>
 #include <algorithm>
@@ -14,9 +15,6 @@ USING_NS_CC;
 #define FIGHTER_ON_PLACE_EPSILON 2.f
 #define FIGHTER_NEXT_SHOT_TIME_INTERVAL 0.3f
 
-#define FIGHTER_NODE_TAG 33
-#define ENEMY_NODE_TAG 44
-
 #define LAND_HEIGHT 0.1f
 
 Node* Fighter::create(const cocos2d::Size& visibleSize)
@@ -25,8 +23,16 @@ Node* Fighter::create(const cocos2d::Size& visibleSize)
     _positionY = _visibleSize.height / 2;
 
     _sprite = Sprite::create("world\\fighter.png");
-    _sprite->setTag(FIGHTER_NODE_TAG);
-    createCirclePhysicsBody(0.2f, 0x0f, 0x2);
+    _sprite->setTag(33);
+    createCirclePhysicsBody(
+        0.2f,
+        CollisionBitmask::FIGHTER,
+        CollisionBitmask::BOMBER |
+            CollisionBitmask::INTERCEPTOR |
+            CollisionBitmask::METEOR |
+            CollisionBitmask::BIRD |
+            CollisionBitmask::ENEMY_BULLET
+    );
 
     _xOffset = visibleSize.width * 0.3f;
     _sprite->setPosition(Vec2(_xOffset, _positionY));
@@ -37,64 +43,12 @@ Node* Fighter::create(const cocos2d::Size& visibleSize)
     return _sprite;
 }
 
-void Fighter::setGameEngine(std::shared_ptr<GameEngine> gameEngine)
-{
-    _gameEngine = gameEngine;
-}
-
-
 void Fighter::reset() {
     _fire = false;
     for (auto bullet: _bullets) {
         _sprite->getParent()->removeChild(bullet->getNode());
     }
     _bullets.clear();
-}
-
-bool Fighter::onContactBegin(PhysicsContact& contact)
-{
-    auto nodeA = contact.getShapeA()->getBody()->getNode();
-    if (nodeA == nullptr) {
-        return false;
-    }
-
-    auto nodeB = contact.getShapeB()->getBody()->getNode();
-    if (nodeB == nullptr) {
-        return false;
-    }
-
-    auto tagA = nodeA->getTag();
-    auto tagB = nodeB->getTag();
-    if (tagA == tagB) {
-        return false;
-    }
-
-    auto bitmaskA = contact.getShapeA()->getCategoryBitmask();
-    auto bitmaskB = contact.getShapeB()->getCategoryBitmask();
-
-    if (contact.getShapeA()->getBody()->getNode()->getTag() == FIGHTER_NODE_TAG) {
-        _gameEngine->gameOver();
-        return true;
-    }
-
-    if (contact.getShapeB()->getBody()->getNode()->getTag() == FIGHTER_NODE_TAG) {
-        _gameEngine->gameOver();
-        return true;
-    }
-
-    if (contact.getShapeA()->getBody()->getNode()->getTag() == 44) {
-        auto body = contact.getShapeA()->getBody();
-        _gameEngine->killEnemy(body->getNode());
-        return true;
-    }
-
-    if (contact.getShapeB()->getBody()->getNode()->getTag() == 44) {
-        auto body = contact.getShapeB()->getBody();
-        _gameEngine->killEnemy(body->getNode());
-        return true;
-    }
-
-    return false;
 }
 
 void Fighter::onMouseMove(Event* event)
@@ -144,8 +98,8 @@ void Fighter::updatePosition(float dt) {
     _positionY = clampf(_positionY, 0, _visibleSize.height);
     _sprite->setPosition(Vec2(_xOffset, _positionY));
 
-    if (_positionY - _fighterHeight / 2 < _gameEngine->gameState.landHeight) {
-        _gameEngine->gameOver();
+    if (_positionY - _fighterHeight / 2 < GameEngine::getInstance().gameState.landHeight) {
+        GameEngine::getInstance().gameOver();
         return;
     }
 }
@@ -164,7 +118,7 @@ void Fighter::updateBullets(float dt) {
         [updated, this](std::shared_ptr<Bullet>& bullet) {
             if (!bullet->isVisible()) {
                 auto node = bullet->getNode();
-                node->getParent()->removeChild(bullet->getNode(), true);
+                node->getParent()->removeChild(node, true);
                 return false;
             }
             else return true;
@@ -185,7 +139,7 @@ void Fighter::updateBullets(float dt) {
         _nextShotTime = FIGHTER_NEXT_SHOT_TIME_INTERVAL;
         auto bullet = std::make_shared<Bullet>();
         _bullets.push_back(bullet);
-        auto bulletSprite = bullet->create(_visibleSize, Vec2(_xOffset, _positionY), _gameEngine->gameState.landHeight);
+        auto bulletSprite = bullet->create(_visibleSize, Vec2(_xOffset, _positionY), GameEngine::getInstance().gameState.landHeight);
         _sprite->getParent()->addChild(bulletSprite);
     }
 }

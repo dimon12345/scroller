@@ -7,8 +7,14 @@
 class GameEngine {
 	GameState _gameState;
 
-public:
+	void updateEnemyBullets(float dt);
 	GameEngine();
+	GameEngine(const GameEngine&) = delete;
+	GameEngine& operator= (const GameEngine &engine) = delete;
+
+public:
+	static GameEngine& getInstance();
+	
 	const GameState &gameState;
 
 	void createEnemy(cocos2d::Node* scene, const cocos2d::Size& visibleSize);
@@ -20,4 +26,7 @@ public:
 	void gameOver();
 
 	void setLandHeight(float height);
+
+	void addEnemyBullet(std::shared_ptr<EnemyBullet> enemyBullet);
+	bool onContactBegin(cocos2d::PhysicsContact& contact);
 };

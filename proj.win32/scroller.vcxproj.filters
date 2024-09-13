@@ -31,6 +31,9 @@
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\EnemyBullet.cpp">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Meteor.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
@@ -93,6 +96,9 @@
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\EnemyBullet.h">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Meteor.h">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
@@ -151,6 +157,9 @@
       <Filter>Resources\world</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Resources\world\cloud.png">
+      <Filter>Resources\world</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Resources\world\enemy_bullet.png">
       <Filter>Resources\world</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Resources\world\fighter.png">

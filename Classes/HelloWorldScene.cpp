@@ -53,7 +53,6 @@ bool HelloWorld::init()
     this->addChild(bg, -2);
 
     scheduleUpdate();
-    _gameEngine = std::make_shared<GameEngine>();
 
     // button
     auto closeItem = MenuItemImage::create(
@@ -77,7 +76,7 @@ bool HelloWorld::init()
     auto foregroundNode = _foreground.create(_visibleSize);
     this->addChild(foregroundNode, 1);
 
-    _gameEngine->setLandHeight(_foreground.getTileHeight());
+    GameEngine::getInstance().setLandHeight(_foreground.getTileHeight());
 
     this->addChild(_fighter.create(_visibleSize));
 
@@ -108,9 +107,8 @@ bool HelloWorld::init()
     this->addChild(_score);
 
     // player events
-    _fighter.setGameEngine(_gameEngine);
     auto contactListener = EventListenerPhysicsContact::create();
-    contactListener->onContactBegin = CC_CALLBACK_1(Fighter::onContactBegin, &_fighter);
+    contactListener->onContactBegin = CC_CALLBACK_1(GameEngine::onContactBegin, &GameEngine::getInstance());
     _eventDispatcher->addEventListenerWithSceneGraphPriority(contactListener, this);
 
     _mouseListener = EventListenerMouse::create();
@@ -120,7 +118,7 @@ bool HelloWorld::init()
 
     _eventDispatcher->addEventListenerWithFixedPriority(_mouseListener, 1);
 
-    this->addChild(_meteor.create(_visibleSize, _gameEngine->gameState.landHeight));
+    this->addChild(_meteor.create(_visibleSize, GameEngine::getInstance().gameState.landHeight));
     _nextTimeShowMeteor = random(METEOR_MIN_TIME, METEOR_MAX_TIME);
 
     reset();
@@ -130,7 +128,7 @@ bool HelloWorld::init()
 
 void HelloWorld::update(float dt)
 {
-    if (_gameEngine->gameState.gameOver) {
+    if (GameEngine::getInstance().gameState.gameOver) {
         if (!_gameOverLabel) {
             _gameOverLabel = Label::createWithTTF("Game\nover!", "fonts/Marker Felt.ttf", 124);
             _gameOverLabel->setTextColor(Color4B(120, 12, 12, 255));
@@ -159,10 +157,10 @@ void HelloWorld::update(float dt)
     _foreground.update(dt);
     _fighter.update(dt);
 
-    _gameEngine->update(dt, this, _visibleSize);
+    GameEngine::getInstance().update(dt, this, _visibleSize);
 
-    if (_oldScore != _gameEngine->gameState.score) {
-        _oldScore = _gameEngine->gameState.score;
+    if (_oldScore != GameEngine::getInstance().gameState.score) {
+        _oldScore = GameEngine::getInstance().gameState.score;
         char buf[30];
         _itoa(_oldScore, buf, 10);
         _score->setString(buf);
@@ -198,7 +196,7 @@ void HelloWorld::restartGameButtonPressed(Ref* pSender)
 
 void HelloWorld::reset()
 {
-    _gameEngine->reset();
+    GameEngine::getInstance().reset();
 
     _fighter.reset();
 

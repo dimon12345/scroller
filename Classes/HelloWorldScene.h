@@ -38,8 +38,6 @@
 
 class HelloWorld : public cocos2d::Layer
 {
-    std::shared_ptr<GameEngine> _gameEngine;
-
     cocos2d::EventListenerMouse *_mouseListener = nullptr;
     cocos2d::Size _visibleSize;
     Background _background;
