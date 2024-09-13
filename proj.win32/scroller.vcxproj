@@ -826,6 +826,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\GameState.h" />
     <ClInclude Include="C:\pj\scroller\Classes\GameEngine.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Land.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Fighter.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h" />
@@ -843,6 +844,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\pj\scroller\Classes\Entity.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\GameEngine.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Cloud.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\Land.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Fighter.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp" />
@@ -866,6 +868,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Resources\world\cloud.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\fighter.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\interceptor.png" />
+    <ClInclude Include="C:\pj\scroller\Resources\world\land.png" />
     <ClInclude Include="C:\pj\scroller\Resources\world\meteor.png" />
     <ClCompile Include="C:\pj\scroller\cocos2d\cocos\precheader.cpp" />
   </ItemGroup>

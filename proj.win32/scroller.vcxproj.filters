@@ -16,6 +16,9 @@
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Cloud.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\Land.cpp">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
@@ -67,6 +70,9 @@
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Land.h">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h">
@@ -139,6 +145,9 @@
       <Filter>Resources\world</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Resources\world\interceptor.png">
+      <Filter>Resources\world</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Resources\world\land.png">
       <Filter>Resources\world</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Resources\world\meteor.png">

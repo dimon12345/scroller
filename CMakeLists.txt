@@ -61,6 +61,7 @@ list(APPEND GAME_SOURCE
      Classes/Entity.cpp
      Classes/GameEngine.cpp
      Classes/nodes/Cloud.cpp
+     Classes/nodes/Land.cpp
      Classes/nodes/Background.cpp
      Classes/nodes/Fighter.cpp
      Classes/nodes/Bullet.cpp
@@ -78,6 +79,7 @@ list(APPEND GAME_HEADER
      Classes/GameState.h
      Classes/GameEngine.h
      Classes/nodes/Cloud.h
+     Classes/nodes/Land.h
      Classes/nodes/Background.h
      Classes/nodes/Fighter.h
      Classes/nodes/Bullet.h

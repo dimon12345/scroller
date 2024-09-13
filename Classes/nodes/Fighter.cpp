@@ -17,6 +17,8 @@ USING_NS_CC;
 #define FIGHTER_NODE_TAG 33
 #define ENEMY_NODE_TAG 44
 
+#define LAND_HEIGHT 0.1f
+
 Node* Fighter::create(const cocos2d::Size& visibleSize)
 {
     _visibleSize = visibleSize;
@@ -139,8 +141,12 @@ void Fighter::updatePosition(float dt) {
     }
 
     _positionY = clampf(_positionY, 0, _visibleSize.height);
-
     _sprite->setPosition(Vec2(_xOffset, _positionY));
+
+    if (_positionY < _visibleSize.height * LAND_HEIGHT) {
+        _gameEngine->gameOver();
+        return;
+    }
 }
 
 void Fighter::updateBullets(float dt) {
