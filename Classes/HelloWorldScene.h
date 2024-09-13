@@ -26,6 +26,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "nodes/Background.h"
+#include "nodes/Foreground.h"
 #include "nodes/Fighter.h"
 #include "nodes/Enemy.h"
 #include "nodes/Meteor.h"
@@ -42,6 +43,7 @@ class HelloWorld : public cocos2d::Layer
     cocos2d::EventListenerMouse *_mouseListener = nullptr;
     cocos2d::Size _visibleSize;
     Background _background;
+    Foreground _foreground;
     Fighter _fighter;
     Meteor _meteor;
     float _nextTimeShowMeteor;

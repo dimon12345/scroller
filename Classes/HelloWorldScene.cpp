@@ -28,8 +28,8 @@
 
 USING_NS_CC;
 
-#define METEOR_MAX_TIME 7.f
-#define METEOR_MIN_TIME 5.f
+#define METEOR_MAX_TIME 15.f
+#define METEOR_MIN_TIME 10.f
 
 Scene* HelloWorld::createScene()
 {
@@ -73,7 +73,11 @@ bool HelloWorld::init()
     auto backgroundNode = _background.create(_visibleSize);
     this->addChild(backgroundNode, -1);
 
-    _gameEngine->setLandHeight(_background.getTileHeight());
+    // foreground
+    auto foregroundNode = _foreground.create(_visibleSize);
+    this->addChild(foregroundNode, 1);
+
+    _gameEngine->setLandHeight(_foreground.getTileHeight());
 
     this->addChild(_fighter.create(_visibleSize));
 
@@ -152,6 +156,7 @@ void HelloWorld::update(float dt)
     }
 
     _background.update(dt);
+    _foreground.update(dt);
     _fighter.update(dt);
 
     _gameEngine->update(dt, this, _visibleSize);

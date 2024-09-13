@@ -828,6 +828,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Land.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Foreground.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Fighter.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Meteor.h" />
@@ -847,6 +848,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Cloud.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Land.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\Foreground.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Fighter.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Meteor.cpp" />

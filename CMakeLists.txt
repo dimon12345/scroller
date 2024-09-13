@@ -63,6 +63,7 @@ list(APPEND GAME_SOURCE
      Classes/nodes/Cloud.cpp
      Classes/nodes/Land.cpp
      Classes/nodes/Background.cpp
+     Classes/nodes/Foreground.cpp
      Classes/nodes/Fighter.cpp
      Classes/nodes/Bullet.cpp
      Classes/nodes/Meteor.cpp
@@ -82,6 +83,7 @@ list(APPEND GAME_HEADER
      Classes/nodes/Cloud.h
      Classes/nodes/Land.h
      Classes/nodes/Background.h
+     Classes/nodes/Foreground.h
      Classes/nodes/Fighter.h
      Classes/nodes/Bullet.h
      Classes/nodes/Meteor.h
