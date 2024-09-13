@@ -61,3 +61,8 @@ void Background::update(float dt)
         nextPosition += Vec2(_tileSize.width, 0);
     }
 }
+
+float Background::getTileHeight()
+{
+    return _tileSize.height;
+}

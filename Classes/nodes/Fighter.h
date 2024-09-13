@@ -17,10 +17,10 @@ class Fighter : public Entity {
 	float _xOffset;
 	bool _fire = false;
 	float _nextShotTime;
+	float _fighterHeight;
 
 	void updatePosition(float ft);
 	void updateBullets(float ft);
-	void destroyEnemy(cocos2d::Node* enemy);
 
 	std::list<std::shared_ptr<Bullet>> _bullets;
 

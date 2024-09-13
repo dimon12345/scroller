@@ -70,6 +70,8 @@ bool HelloWorld::init()
     auto backgroundNode = _background.create(_visibleSize);
     this->addChild(backgroundNode, -1);
 
+    _gameEngine->setLandHeight(_background.getTileHeight());
+
     this->addChild(_fighter.create(_visibleSize));
 
     // score

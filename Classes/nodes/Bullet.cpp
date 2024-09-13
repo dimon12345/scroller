@@ -4,11 +4,12 @@ USING_NS_CC;
 
 #define BULLET_X_VELOCITY 150.f
 
-Node* Bullet::create(const cocos2d::Size& visibleSize, const Vec2 &position)
+Node* Bullet::create(const cocos2d::Size& visibleSize, const Vec2 &position, float landHeight)
 {
     _visibleSize = visibleSize;
     _position = position;
     _velocity = Vec2(BULLET_X_VELOCITY, 0);
+    _landHeight = landHeight;
 
     _sprite = Sprite::create("world\\bullet.png");
     _sprite->setPosition(position);
@@ -25,7 +26,7 @@ void Bullet::update(float dt)
 
 bool Bullet::isVisible()
 {
-    if (_position.y < 0 - _sprite->getContentSize().height / 2.f) {
+    if (_position.y < _landHeight) {
         return false;
     }
 

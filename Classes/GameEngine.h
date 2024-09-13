@@ -18,4 +18,6 @@ public:
 	void reset();
 
 	void gameOver();
+
+	void setLandHeight(float height);
 };

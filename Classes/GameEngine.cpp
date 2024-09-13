@@ -81,7 +81,6 @@ void GameEngine::reset()
 	for (auto enemy : _gameState.enemies) {
 		auto node = enemy->getNode();
 		node->getParent()->removeChild(node);
-		enemy.reset();
 	}
 	_gameState.enemies.clear();
 }
@@ -89,4 +88,9 @@ void GameEngine::reset()
 void GameEngine::gameOver()
 {
 	_gameState.gameOver = true;
+}
+
+void GameEngine::setLandHeight(float height)
+{
+	_gameState.landHeight = height;
 }

@@ -30,6 +30,7 @@ Node* Fighter::create(const cocos2d::Size& visibleSize)
 
     _xOffset = visibleSize.width * 0.3f;
     _sprite->setPosition(Vec2(_xOffset, _positionY));
+    _fighterHeight = _sprite->getContentSize().height;
 
     reset();
 
@@ -143,7 +144,7 @@ void Fighter::updatePosition(float dt) {
     _positionY = clampf(_positionY, 0, _visibleSize.height);
     _sprite->setPosition(Vec2(_xOffset, _positionY));
 
-    if (_positionY < _visibleSize.height * LAND_HEIGHT) {
+    if (_positionY - _fighterHeight / 2 < _gameEngine->gameState.landHeight) {
         _gameEngine->gameOver();
         return;
     }
@@ -184,7 +185,7 @@ void Fighter::updateBullets(float dt) {
         _nextShotTime = FIGHTER_NEXT_SHOT_TIME_INTERVAL;
         auto bullet = std::make_shared<Bullet>();
         _bullets.push_back(bullet);
-        auto bulletSprite = bullet->create(_visibleSize, Vec2(_xOffset, _positionY));
+        auto bulletSprite = bullet->create(_visibleSize, Vec2(_xOffset, _positionY), _gameEngine->gameState.landHeight);
         _sprite->getParent()->addChild(bulletSprite);
     }
 }

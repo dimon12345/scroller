@@ -19,4 +19,5 @@ public:
 	cocos2d::Node* create(const cocos2d::Size& visibleSize);
 	void restartClouds(bool randomX);
 	void update(float dt);
+	float getTileHeight();
 };

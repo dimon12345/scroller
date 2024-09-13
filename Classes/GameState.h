@@ -13,4 +13,5 @@ struct GameState {
 	float nextTimeAddEnemy = 0;
 	size_t maxEnemies;
 	int score = 0;
+	float landHeight = 0;
 };
