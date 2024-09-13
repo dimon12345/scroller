@@ -53,3 +53,10 @@ bool Meteor::checkVisibility()
 	return true;
 }
 
+void Meteor::hide()
+{
+	_visible = false;
+	_position = Vec2(-_size.width / 2, _landHeight - _size.height / 2);
+	_sprite->setPosition(_position);
+}
+

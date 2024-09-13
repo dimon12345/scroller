@@ -67,7 +67,7 @@ bool HelloWorld::init()
 
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
+    this->addChild(menu, 2);
 
     // background
     auto backgroundNode = _background.create(_visibleSize);
@@ -211,6 +211,8 @@ void HelloWorld::reset()
         this->removeChild(_restartButton);
         _restartButton = nullptr;
     }
+
+    _meteor.hide();
 
     _background.restartClouds(true);
 }

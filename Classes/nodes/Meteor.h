@@ -16,4 +16,5 @@ public:
 	cocos2d::Node* create(const cocos2d::Size& visibleSize, float landHeight);
 	void restart();
 	void update(float dt);
+	void hide();
 };
