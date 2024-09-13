@@ -28,6 +28,9 @@
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\Meteor.cpp">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClCompile>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\EnemyFactory.cpp">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClCompile>
@@ -82,6 +85,9 @@
       <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h">
+      <Filter>Source Files\Classes\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Meteor.h">
       <Filter>Source Files\Classes\nodes</Filter>
     </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Enemy.h">

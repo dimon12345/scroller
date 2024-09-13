@@ -28,6 +28,9 @@
 
 USING_NS_CC;
 
+#define METEOR_MAX_TIME 7.f
+#define METEOR_MIN_TIME 5.f
+
 Scene* HelloWorld::createScene()
 {
     auto scene = Scene::createWithPhysics();
@@ -113,6 +116,9 @@ bool HelloWorld::init()
 
     _eventDispatcher->addEventListenerWithFixedPriority(_mouseListener, 1);
 
+    this->addChild(_meteor.create(_visibleSize, _gameEngine->gameState.landHeight));
+    _nextTimeShowMeteor = random(METEOR_MIN_TIME, METEOR_MAX_TIME);
+
     reset();
 
     return true;
@@ -163,6 +169,16 @@ void HelloWorld::update(float dt)
             )
         );
     }
+
+    _nextTimeShowMeteor -= dt;
+    if (_nextTimeShowMeteor < 0) {
+        _nextTimeShowMeteor = random(METEOR_MIN_TIME, METEOR_MAX_TIME);
+
+        _meteor.restart();
+    }
+
+    _meteor.update(dt);
+
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

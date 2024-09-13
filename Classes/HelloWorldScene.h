@@ -28,6 +28,7 @@
 #include "nodes/Background.h"
 #include "nodes/Fighter.h"
 #include "nodes/Enemy.h"
+#include "nodes/Meteor.h"
 #include "GameEngine.h"
 
 #include "cocos2d.h"
@@ -42,6 +43,8 @@ class HelloWorld : public cocos2d::Layer
     cocos2d::Size _visibleSize;
     Background _background;
     Fighter _fighter;
+    Meteor _meteor;
+    float _nextTimeShowMeteor;
     cocos2d::Label* _gameOverLabel = nullptr;
     cocos2d::Menu* _restartButton = nullptr;
     int _oldScore = 0;

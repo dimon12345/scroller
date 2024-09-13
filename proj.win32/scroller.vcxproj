@@ -830,6 +830,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Background.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Fighter.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Bullet.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\nodes\Meteor.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Enemy.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\EnemyFactory.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\enemies\Bird.h" />
@@ -848,6 +849,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Background.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Fighter.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\Bullet.cpp" />
+    <ClCompile Include="C:\pj\scroller\Classes\nodes\Meteor.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\EnemyFactory.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bird.cpp" />
     <ClCompile Include="C:\pj\scroller\Classes\nodes\enemies\Bomber.cpp" />
