@@ -22,11 +22,8 @@ class Fighter : public Entity {
 	void updatePosition(float ft);
 	void updateBullets(float ft);
 
-	std::list<std::shared_ptr<Bullet>> _bullets;
-
 public:
 	cocos2d::Node* create(const cocos2d::Size& visibleSize);
-	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	void onMouseMove(cocos2d::Event* event);
 	void onMouseDown(cocos2d::Event* event);
 	void onMouseUp(cocos2d::Event* event);

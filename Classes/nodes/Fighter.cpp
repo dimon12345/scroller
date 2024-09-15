@@ -45,10 +45,6 @@ Node* Fighter::create(const cocos2d::Size& visibleSize)
 
 void Fighter::reset() {
     _fire = false;
-    for (auto bullet: _bullets) {
-        _sprite->getParent()->removeChild(bullet->getNode());
-    }
-    _bullets.clear();
 }
 
 void Fighter::onMouseMove(Event* event)
@@ -105,30 +101,7 @@ void Fighter::updatePosition(float dt) {
 }
 
 void Fighter::updateBullets(float dt) {
-    for (auto const& bullet : _bullets) {
-        bullet->update(dt);
-    }
-
-    std::list<std::shared_ptr<Bullet>> result;
-    bool updated = false;
-    std::copy_if(
-        _bullets.begin(),
-        _bullets.end(),
-        std::back_inserter(result),
-        [updated, this](std::shared_ptr<Bullet>& bullet) {
-            if (!bullet->isVisible()) {
-                auto node = bullet->getNode();
-                node->getParent()->removeChild(node, true);
-                return false;
-            }
-            else return true;
-        }
-    );
-
-    if (result.size() != _bullets.size()) {
-        _bullets = result;
-    }
-
+    
     _nextShotTime -= dt;
 
     if (!_fire) {
@@ -137,9 +110,7 @@ void Fighter::updateBullets(float dt) {
 
     if (_nextShotTime < 0) {
         _nextShotTime = FIGHTER_NEXT_SHOT_TIME_INTERVAL;
-        auto bullet = std::make_shared<Bullet>();
-        _bullets.push_back(bullet);
-        auto bulletSprite = bullet->create(_visibleSize, Vec2(_xOffset, _positionY), GameEngine::getInstance().gameState.landHeight);
-        _sprite->getParent()->addChild(bulletSprite);
+
+        GameEngine::getInstance().fire(_sprite->getParent(), Vec2(_xOffset, _positionY));
     }
 }

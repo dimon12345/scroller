@@ -77,6 +77,7 @@ bool HelloWorld::init()
     this->addChild(foregroundNode, 1);
 
     GameEngine::getInstance().setLandHeight(_foreground.getTileHeight());
+    GameEngine::getInstance().setVisibleSize(_visibleSize);
 
     this->addChild(_fighter.create(_visibleSize));
 

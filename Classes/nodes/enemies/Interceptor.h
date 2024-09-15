@@ -10,10 +10,12 @@ class EnemyBullet;
 
 class Interceptor : public Enemy
 {
+	void updateVerticalVelocity(float dt);
 protected:
 	cocos2d::Vec2 _position;
 	cocos2d::Vec2 _velocity;
 	float _nextShotTime;
+	float _minHeight;
 	void fire();
 
 public:

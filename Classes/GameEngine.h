@@ -29,4 +29,8 @@ public:
 
 	void addEnemyBullet(std::shared_ptr<EnemyBullet> enemyBullet);
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
+
+	void fire(cocos2d::Node* scene, cocos2d::Vec2& position);
+
+	void setVisibleSize(const cocos2d::Size& visibleSize);
 };

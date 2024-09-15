@@ -3,6 +3,7 @@
 #include "nodes/EnemyFactory.h"
 #include "nodes/Enemy.h"
 #include "nodes/EnemyBullet.h"
+#include "nodes/Bullet.h"
 
 USING_NS_CC;
 
@@ -26,7 +27,11 @@ GameEngine& GameEngine::getInstance()
 	static GameEngine gameEngine;
 
 	return gameEngine;
+}
 
+void GameEngine::setVisibleSize(const Size& visibleSize)
+{
+	_gameState.visibleSize = visibleSize;
 }
 
 void GameEngine::createEnemy(Node* scene, const Size &visibleSize)
@@ -82,6 +87,31 @@ void GameEngine::update(float dt, Node *scene, const Size &visibleSize)
 	}
 
 	updateEnemyBullets(dt);
+
+	for (auto const& bullet : _gameState.bullets) {
+		bullet->update(dt);
+	}
+
+	std::list<std::shared_ptr<Bullet>> result;
+	bool updated = false;
+	std::copy_if(
+		_gameState.bullets.begin(),
+		_gameState.bullets.end(),
+		std::back_inserter(result),
+		[updated, this](std::shared_ptr<Bullet>& bullet) {
+			if (!bullet->isVisible()) {
+				auto node = bullet->getNode();
+				node->getParent()->removeChild(node, true);
+				return false;
+			}
+			else return true;
+		}
+	);
+
+	if (result.size() != _gameState.bullets.size()) {
+		_gameState.bullets = result;
+	}
+
 }
 
 void GameEngine::updateEnemyBullets(float dt)
@@ -131,6 +161,12 @@ void GameEngine::reset()
 		node->getParent()->removeChild(node);
 	}
 	_gameState.enemyBullets.clear();
+
+	for (auto bullet : _gameState.bullets) {
+		auto node = bullet->getNode();
+		node->getParent()->removeChild(bullet->getNode());
+	}
+	_gameState.bullets.clear();
 }
 
 void GameEngine::gameOver()
@@ -192,4 +228,11 @@ bool GameEngine::onContactBegin(PhysicsContact& contact)
 	}
 
 	return false;
+}
+
+void GameEngine::fire(cocos2d::Node *scene, cocos2d::Vec2& position) {
+	auto bullet = std::make_shared<Bullet>();
+	_gameState.bullets.push_back(bullet);
+	auto bulletSprite = bullet->create(_gameState.visibleSize, position, GameEngine::getInstance().gameState.landHeight);
+	scene->addChild(bulletSprite);
 }
