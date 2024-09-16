@@ -1,16 +1,16 @@
 #include "Bomber.h"
 
 #include "CollisionBitmask.h"
+#include "GameEngine.h"
 
 USING_NS_CC;
 
-cocos2d::Node* Bomber::create(const cocos2d::Size& visibleSize)
+cocos2d::Node* Bomber::create()
 {
-	_visibleSize = visibleSize;
-
 	_sprite = Sprite::create("world\\bomber.png");
-	_position = Vec2(_visibleSize.width + _sprite->getContentSize().width / 2.f, 0);
-	_sprite->setTag(44);
+	const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
+	_position = Vec2(visibleSize.width + _sprite->getContentSize().width / 2.f, 0);
+	_sprite->setTag(ENEMY_NODE_TAG);
 	createCirclePhysicsBody(
 		0.3f,
 		CollisionBitmask::BOMBER,

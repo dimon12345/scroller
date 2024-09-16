@@ -1,14 +1,14 @@
 #include "Bullet.h"
 
 #include "CollisionBitmask.h"
+#include "GameEngine.h"
 
 USING_NS_CC;
 
 #define BULLET_X_VELOCITY 150.f
 
-Node* Bullet::create(const cocos2d::Size& visibleSize, const Vec2 &position, float landHeight)
+Node* Bullet::create(const Vec2 &position, float landHeight)
 {
-    _visibleSize = visibleSize;
     _position = position;
     _velocity = Vec2(BULLET_X_VELOCITY, 0);
     _landHeight = landHeight;
@@ -35,7 +35,8 @@ bool Bullet::isVisible()
         return false;
     }
 
-    if (_position.x > _visibleSize.width + _sprite->getContentSize().width / 2.f) {
+    const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
+    if (_position.x > visibleSize.width + _sprite->getContentSize().width / 2.f) {
         return false;
     }
 

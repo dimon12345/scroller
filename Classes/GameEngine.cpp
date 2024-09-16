@@ -4,18 +4,15 @@
 #include "nodes/Enemy.h"
 #include "nodes/EnemyBullet.h"
 #include "nodes/Bullet.h"
+#include "CollisionBitmask.h"
 
 USING_NS_CC;
 
-//#define NEXT_ENEMY_DELAY 1.f
-//#define NEXT_TIME_ADD_ENEMY 3.f
+#define NEXT_ENEMY_DELAY 1.f
+#define NEXT_TIME_ADD_ENEMY 3.f
 
-#define NEXT_ENEMY_DELAY 0.05f
-#define NEXT_TIME_ADD_ENEMY 1.0f
-
-#define FIGHTER_NODE_TAG 33
-//#define ENEMY_NODE_TAG 44
-//
+//#define NEXT_ENEMY_DELAY 0.05f
+//#define NEXT_TIME_ADD_ENEMY 1.0f
 
 GameEngine::GameEngine()
 	: gameState(_gameState)
@@ -34,13 +31,10 @@ void GameEngine::setVisibleSize(const Size& visibleSize)
 	_gameState.visibleSize = visibleSize;
 }
 
-void GameEngine::createEnemy(Node* scene, const Size &visibleSize)
+void GameEngine::createEnemy(Node* scene)
 {
 	std::shared_ptr<Enemy> enemy(EnemyFactory::createEnemy());
-
-	auto sprite = enemy->create(visibleSize);
-	scene->addChild(sprite);
-
+	scene->addChild(enemy->create());
 	_gameState.enemies.push_back(enemy);
 }
 
@@ -60,7 +54,7 @@ void GameEngine::killEnemy(Node* node)
 	}
 }
 
-void GameEngine::update(float dt, Node *scene, const Size &visibleSize)
+void GameEngine::update(float dt, Node *scene)
 {
 	_gameState.nextTimeAddEnemy -= dt;
 	if (_gameState.nextTimeAddEnemy <= 0) {
@@ -71,7 +65,7 @@ void GameEngine::update(float dt, Node *scene, const Size &visibleSize)
 	_gameState.nextEnemyTime -= dt;
 	if (_gameState.nextEnemyTime <= 0 && (_gameState.enemies.size() < _gameState.maxEnemies)) {
 		_gameState.nextEnemyTime = NEXT_ENEMY_DELAY;
-		createEnemy(scene, visibleSize);
+		createEnemy(scene);
 	}
 
 	for (auto enemyIt = _gameState.enemies.begin(); enemyIt != _gameState.enemies.end(); ++enemyIt) {
@@ -81,7 +75,7 @@ void GameEngine::update(float dt, Node *scene, const Size &visibleSize)
 			node->getParent()->removeChild(node, true);
 			_gameState.enemies.erase(enemyIt);
 			_gameState.nextEnemyTime = NEXT_ENEMY_DELAY;
-			createEnemy(scene, visibleSize);
+			createEnemy(scene);
 			break;
 		}
 	}
@@ -233,6 +227,6 @@ bool GameEngine::onContactBegin(PhysicsContact& contact)
 void GameEngine::fire(cocos2d::Node *scene, cocos2d::Vec2& position) {
 	auto bullet = std::make_shared<Bullet>();
 	_gameState.bullets.push_back(bullet);
-	auto bulletSprite = bullet->create(_gameState.visibleSize, position, GameEngine::getInstance().gameState.landHeight);
+	auto bulletSprite = bullet->create(position, GameEngine::getInstance().gameState.landHeight);
 	scene->addChild(bulletSprite);
 }

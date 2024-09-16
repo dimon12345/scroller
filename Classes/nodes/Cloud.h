@@ -10,7 +10,7 @@ class Cloud : public Entity
 	cocos2d::Vec2 _velocity;
 
 public:
-	cocos2d::Node* create(const cocos2d::Size& visibleSize);
+	cocos2d::Node* create();
 	void restartPosition(bool randomX);
 	void update(float dt);
 };

@@ -17,13 +17,13 @@ USING_NS_CC;
 
 #define LAND_HEIGHT 0.1f
 
-Node* Fighter::create(const cocos2d::Size& visibleSize)
+Node* Fighter::create()
 {
-    _visibleSize = visibleSize;
-    _positionY = _visibleSize.height / 2;
+    const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
+    _positionY = visibleSize.height / 2;
 
     _sprite = Sprite::create("world\\fighter.png");
-    _sprite->setTag(33);
+    _sprite->setTag(FIGHTER_NODE_TAG);
     createCirclePhysicsBody(
         0.2f,
         CollisionBitmask::FIGHTER,
@@ -37,6 +37,7 @@ Node* Fighter::create(const cocos2d::Size& visibleSize)
     _xOffset = visibleSize.width * 0.3f;
     _sprite->setPosition(Vec2(_xOffset, _positionY));
     _fighterHeight = _sprite->getContentSize().height;
+    _maxHeight = GameEngine::getInstance().gameState.visibleSize.height;
 
     reset();
 
@@ -91,7 +92,7 @@ void Fighter::updatePosition(float dt) {
         _positionY = _cursorY;
     }
 
-    _positionY = clampf(_positionY, 0, _visibleSize.height);
+    _positionY = clampf(_positionY, 0, _maxHeight);
     _sprite->setPosition(Vec2(_xOffset, _positionY));
 
     if (_positionY - _fighterHeight / 2 < GameEngine::getInstance().gameState.landHeight) {

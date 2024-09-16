@@ -39,7 +39,6 @@
 class HelloWorld : public cocos2d::Layer
 {
     cocos2d::EventListenerMouse *_mouseListener = nullptr;
-    cocos2d::Size _visibleSize;
     Background _background;
     Foreground _foreground;
     Fighter _fighter;
@@ -49,6 +48,7 @@ class HelloWorld : public cocos2d::Layer
     cocos2d::Menu* _restartButton = nullptr;
     int _oldScore = 0;
     cocos2d::Label* _score = nullptr;
+    cocos2d::DrawNode* _drawNode = nullptr;
     float _scoreXOffset = 0.f;
     float _scoreY = 0.f;
 

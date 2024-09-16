@@ -10,7 +10,7 @@ class Bullet : public Entity {
 	float _landHeight;
 
 public:
-	cocos2d::Node* create(const cocos2d::Size& visibleSize, const cocos2d::Vec2& position, float landHeight);
+	cocos2d::Node* create(const cocos2d::Vec2& position, float landHeight);
 	void update(float dt);
 	bool isVisible();
 	inline const cocos2d::Vec2& getPosition() { return _position; }

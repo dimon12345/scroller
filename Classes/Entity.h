@@ -5,7 +5,6 @@
 class Entity
 {
 protected:
-	cocos2d::Size _visibleSize;
 	cocos2d::Node* _sprite;
 
 	void createCirclePhysicsBody(float scale, int categoryBitmask, int contactTestBitmask);

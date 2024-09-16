@@ -6,9 +6,8 @@ USING_NS_CC;
 
 #include "CollisionBitmask.h"
 
-Node* EnemyBullet::create(const cocos2d::Size& visibleSize, const Vec2 &position)
+Node* EnemyBullet::create(const Vec2 &position)
 {
-    _visibleSize = visibleSize;
     _position = position;
     _velocity = Vec2(BULLET_X_VELOCITY, 0);
 

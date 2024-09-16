@@ -46,8 +46,10 @@ bool HelloWorld::init()
         return false;
     }
 
-    _visibleSize = Director::getInstance()->getVisibleSize();
+    Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+    GameEngine::getInstance().setVisibleSize(visibleSize);
 
     auto bg = LayerColor::create(Color4B(136, 210, 242, 255));
     this->addChild(bg, -2);
@@ -60,7 +62,7 @@ bool HelloWorld::init()
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
 
-    float x = origin.x + _visibleSize.width - closeItem->getContentSize().width/2;
+    float x = origin.x + visibleSize.width - closeItem->getContentSize().width/2;
     float y = origin.y + closeItem->getContentSize().height/2;
     closeItem->setPosition(Vec2(x,y));
 
@@ -69,23 +71,23 @@ bool HelloWorld::init()
     this->addChild(menu, 2);
 
     // background
-    auto backgroundNode = _background.create(_visibleSize);
+    auto backgroundNode = _background.create();
     this->addChild(backgroundNode, -1);
 
     // foreground
-    auto foregroundNode = _foreground.create(_visibleSize);
+    auto foregroundNode = _foreground.create();
     this->addChild(foregroundNode, 1);
 
     GameEngine::getInstance().setLandHeight(_foreground.getTileHeight());
-    GameEngine::getInstance().setVisibleSize(_visibleSize);
+    
 
-    this->addChild(_fighter.create(_visibleSize));
+    this->addChild(_fighter.create());
 
     // score
 
     auto scoreLabel = Label::createWithTTF("Score:", "fonts/Marker Felt.ttf", 30);
     scoreLabel->setColor(Color3B(54, 105, 13));
-    _scoreY = _visibleSize.height - 30 - scoreLabel->getContentSize().height;
+    _scoreY = visibleSize.height - 30 - scoreLabel->getContentSize().height;
     _scoreXOffset = 30 + scoreLabel->getContentSize().width / 2;
     scoreLabel->setPosition(
         Vec2(
@@ -119,7 +121,7 @@ bool HelloWorld::init()
 
     _eventDispatcher->addEventListenerWithFixedPriority(_mouseListener, 1);
 
-    this->addChild(_meteor.create(_visibleSize, GameEngine::getInstance().gameState.landHeight));
+    this->addChild(_meteor.create(GameEngine::getInstance().gameState.landHeight));
     _nextTimeShowMeteor = random(METEOR_MIN_TIME, METEOR_MAX_TIME);
 
     reset();
@@ -129,22 +131,32 @@ bool HelloWorld::init()
 
 void HelloWorld::update(float dt)
 {
+    const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
     if (GameEngine::getInstance().gameState.gameOver) {
         if (!_gameOverLabel) {
             _gameOverLabel = Label::createWithTTF("Game\nover!", "fonts/Marker Felt.ttf", 124);
             _gameOverLabel->setTextColor(Color4B(120, 12, 12, 255));
-            _gameOverLabel->setPosition(Vec2(_visibleSize.width / 2, _visibleSize.height / 2));
+            _gameOverLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
             this->addChild(_gameOverLabel, 1);
         }
 
         if (!_restartButton) {
             auto restartLabel = Label::createWithTTF("Restart", "fonts/Marker Felt.ttf", 124);
-            restartLabel->setColor(Color3B(54, 105, 13));
-            auto restartItem= MenuItemLabel::create(restartLabel, CC_CALLBACK_1(HelloWorld::restartGameButtonPressed, this));
+            float padding = 30.0f;
+            float yPosition = visibleSize.height / 2.f - padding - restartLabel->getContentSize().width / 2.f;
+            auto buttonPosition = Vec2(visibleSize.width / 2, yPosition);
 
-            float padding = 0.0f;
-            float yPosition = _visibleSize.height / 2.f - padding - restartLabel->getContentSize().width / 2.f;
-            restartItem->setPosition(Vec2(_visibleSize.width / 2, yPosition));
+            _drawNode = DrawNode::create();
+            _drawNode->drawSolidRect(
+                buttonPosition - restartLabel->getContentSize()/2.f - Vec2(padding, padding),
+                buttonPosition + restartLabel->getContentSize()/2.f + Vec2(padding, padding),
+                Color4F(0.5f, 0.7f, 0.4f, 1.f)
+            );
+            this->addChild(_drawNode);
+            
+            restartLabel->setColor(Color3B(54, 105, 13));
+            auto restartItem = MenuItemLabel::create(restartLabel, CC_CALLBACK_1(HelloWorld::restartGameButtonPressed, this));
+            restartItem->setPosition(buttonPosition);
 
             _restartButton = Menu::create(restartItem, NULL);
             _restartButton->setPosition(Vec2::ZERO);
@@ -158,7 +170,7 @@ void HelloWorld::update(float dt)
     _foreground.update(dt);
     _fighter.update(dt);
 
-    GameEngine::getInstance().update(dt, this, _visibleSize);
+    GameEngine::getInstance().update(dt, this);
 
     if (_oldScore != GameEngine::getInstance().gameState.score) {
         _oldScore = GameEngine::getInstance().gameState.score;
@@ -182,7 +194,6 @@ void HelloWorld::update(float dt)
     }
 
     _meteor.update(dt);
-
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
@@ -209,6 +220,11 @@ void HelloWorld::reset()
     if (_restartButton) {
         this->removeChild(_restartButton);
         _restartButton = nullptr;
+    }
+
+    if (_drawNode) {
+        this->removeChild(_drawNode);
+        _drawNode = nullptr;
     }
 
     _meteor.hide();

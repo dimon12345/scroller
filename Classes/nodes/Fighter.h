@@ -11,19 +11,19 @@
 #include "GameEngine.h"
 
 class Fighter : public Entity {
-	cocos2d::Size _visibleSize;
 	float _cursorY;
 	float _positionY;
 	float _xOffset;
 	bool _fire = false;
 	float _nextShotTime;
 	float _fighterHeight;
+	float _maxHeight;
 
 	void updatePosition(float ft);
 	void updateBullets(float ft);
 
 public:
-	cocos2d::Node* create(const cocos2d::Size& visibleSize);
+	cocos2d::Node* create();
 	void onMouseMove(cocos2d::Event* event);
 	void onMouseDown(cocos2d::Event* event);
 	void onMouseUp(cocos2d::Event* event);

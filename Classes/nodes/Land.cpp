@@ -2,8 +2,7 @@
 
 USING_NS_CC;
 
-cocos2d::Node* Land::create(const cocos2d::Size& visibleSize) {
-	_visibleSize = visibleSize;
+cocos2d::Node* Land::create() {
 	_sprite = Sprite::create("world\\land.png");
 	return _sprite;
 }

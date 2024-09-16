@@ -1,11 +1,12 @@
 #include "Cloud.h"
 
+#include "GameEngine.h"
+
 USING_NS_CC;
 
 #define CLOUD_VELOCITY 30
 
-cocos2d::Node* Cloud::create(const cocos2d::Size& visibleSize) {
-	_visibleSize = visibleSize;
+cocos2d::Node* Cloud::create() {
 	_sprite = Sprite::create("world\\cloud.png");
 
 	restartPosition(true);
@@ -17,14 +18,15 @@ cocos2d::Node* Cloud::create(const cocos2d::Size& visibleSize) {
 void Cloud::restartPosition(bool randomX)
 {
 	float cloudWidth = _sprite->getContentSize().width;
-	float x = _visibleSize.width + cloudWidth / 2.f;
+	const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
+	float x = visibleSize.width + cloudWidth / 2.f;
 	if (randomX) {
 		x = random(-cloudWidth/2, x);
 	}
 
 	_position = Vec2 (
 		x,
-		random(0.f, _visibleSize.height)
+		random(0.f, visibleSize.height)
 	);
 	_sprite->setPosition(_position);
 }

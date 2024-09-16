@@ -13,7 +13,7 @@ class Meteor : public Entity
 	cocos2d::Size _size;
 	float _landHeight;
 public:
-	cocos2d::Node* create(const cocos2d::Size& visibleSize, float landHeight);
+	cocos2d::Node* create(float landHeight);
 	void restart();
 	void update(float dt);
 	void hide();

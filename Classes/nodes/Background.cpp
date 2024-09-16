@@ -4,14 +4,13 @@ USING_NS_CC;
 
 #define BACKGROUND_CLOUDS_COUNT 50
 
-Node* Background::create(const cocos2d::Size& visibleSize)
+Node* Background::create()
 {
-    _visibleSize = visibleSize;
     _backgroundNode = Node::create();
 
     for (int i = 0; i < BACKGROUND_CLOUDS_COUNT; ++i) {
         auto cloud = std::make_shared<Cloud>();
-        auto cloudNode = cloud->create(_visibleSize);
+        auto cloudNode = cloud->create();
         _backgroundNode->addChild(cloudNode);
         _clouds.push_back(cloud);
     }

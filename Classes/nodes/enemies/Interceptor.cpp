@@ -19,12 +19,11 @@ USING_NS_CC;
 Interceptor::~Interceptor()
 {
 }
-cocos2d::Node* Interceptor::create(const cocos2d::Size& visibleSize)
+cocos2d::Node* Interceptor::create()
 {
-	_visibleSize = visibleSize;
-
+	const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
 	_sprite = Sprite::create("world\\interceptor.png");
-	_position = Vec2(_visibleSize.width + _sprite->getContentSize().width / 2.f, 0);
+	_position = Vec2(visibleSize.width + _sprite->getContentSize().width / 2.f, 0);
 	_sprite->setTag(44);
 	createCirclePhysicsBody(
 		0.3f,
@@ -125,7 +124,7 @@ void Interceptor::updateVerticalVelocity(float dt)
 void Interceptor::fire()
 {
 	auto bullet = std::make_shared<EnemyBullet>();
-	auto bulletSprite = bullet->create(_visibleSize, _position);
+	auto bulletSprite = bullet->create(_position);
 	_sprite->getParent()->addChild(bulletSprite);
 
 	GameEngine::getInstance().addEnemyBullet(bullet);
@@ -142,7 +141,8 @@ bool Interceptor::isVisible()
 
 void Interceptor::reset()
 {
-	float randomHeight = _visibleSize.height * random(INTERCEPTOR_MIN_HEIGHT, INTERCEPTOR_MAX_HEIGHT);
-	_position = Vec2(_visibleSize.width + _sprite->getContentSize().width / 2.f, randomHeight);
+	const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
+	float randomHeight = visibleSize.height * random(INTERCEPTOR_MIN_HEIGHT, INTERCEPTOR_MAX_HEIGHT);
+	_position = Vec2(visibleSize.width + _sprite->getContentSize().width / 2.f, randomHeight);
 	_velocity = Vec2(INTERCEPTOR_VELOCITY, 0);
 }

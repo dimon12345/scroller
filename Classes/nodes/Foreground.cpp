@@ -1,21 +1,23 @@
 #include "Foreground.h"
 
+#include "GameEngine.h"
+
 USING_NS_CC;
 
 #define LAND_VELOCITY 500
 
-Node* Foreground::create(const cocos2d::Size& visibleSize)
+Node* Foreground::create()
 {
-    _visibleSize = visibleSize;
     _foregroundNode = Node::create();
 
     auto tmpSprite = Sprite::create("world\\land.png");
     _tileSize = tmpSprite->getContentSize();
 
+    const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
     float fullSize = 0;
-    while (fullSize < _visibleSize.width + _tileSize.width/2) {
+    while (fullSize < visibleSize.width + _tileSize.width/2) {
         auto tile = std::make_shared<Land>();
-        auto tileNode = tile->create(visibleSize);
+        auto tileNode = tile->create();
         float width = tileNode->getContentSize().width;
         float height = tileNode->getContentSize().height;
         fullSize += width;

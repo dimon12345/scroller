@@ -1,15 +1,15 @@
 #include "Meteor.h"
 
 #include "CollisionBitmask.h"
+#include "GameEngine.h"
 
 USING_NS_CC;
 
 #define METEOR_X_VELOCITY -100.f
 #define METEOR_Y_VELOCITY -100.f
 
-cocos2d::Node* Meteor::create(const cocos2d::Size& visibleSize, float landHeight)
+cocos2d::Node* Meteor::create(float landHeight)
 {
-	_visibleSize = visibleSize;
 	_landHeight = landHeight;
 	_sprite = Sprite::create("world\\meteor.png");
 	createCirclePhysicsBody(
@@ -18,8 +18,9 @@ cocos2d::Node* Meteor::create(const cocos2d::Size& visibleSize, float landHeight
 		CollisionBitmask::BOMBER | CollisionBitmask::INTERCEPTOR | CollisionBitmask::FIGHTER
 	);
 	_size = _sprite->getContentSize();
+	const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
 	_velocity = Vec2(METEOR_X_VELOCITY, METEOR_Y_VELOCITY);
-	_position = Vec2(_visibleSize.width / 2, _visibleSize.height + _sprite->getContentSize().height / 2);
+	_position = Vec2(visibleSize.width / 2, visibleSize.height + _sprite->getContentSize().height / 2);
 	_sprite->setPosition(_position);
 	restart();
 	_visible = false;
@@ -28,7 +29,8 @@ cocos2d::Node* Meteor::create(const cocos2d::Size& visibleSize, float landHeight
 
 void Meteor::restart()
 {
-	_position = Vec2(_visibleSize.width / 2 + random(0.f, _visibleSize.width), _visibleSize.height + _sprite->getContentSize().height / 2);
+	const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
+	_position = Vec2(visibleSize.width / 2 + random(0.f, visibleSize.width), visibleSize.height + _sprite->getContentSize().height / 2);
 	_sprite->setPosition(_position);
 	_visible = true;
 }

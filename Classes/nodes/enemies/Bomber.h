@@ -1,7 +1,6 @@
 #pragma once
 
 #include "nodes/Enemy.h"
-#include "GameEngine.h"
 
 class Bomber : public Enemy {
 protected:
@@ -9,7 +8,7 @@ protected:
 	cocos2d::Vec2 _velocity;
 
 public:
-	virtual cocos2d::Node* create(const cocos2d::Size& visibleSize) ;
+	virtual cocos2d::Node* create();
 	virtual void update(float dt);
 	virtual bool isVisible();
 };

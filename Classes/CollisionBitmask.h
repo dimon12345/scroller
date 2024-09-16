@@ -9,3 +9,6 @@ namespace CollisionBitmask {
 	const int BULLET = 0x20;
 	const int ENEMY_BULLET = 0x40;
 }
+
+const int ENEMY_NODE_TAG = 44;
+const int FIGHTER_NODE_TAG = 33;
