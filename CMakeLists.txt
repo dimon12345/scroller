@@ -79,6 +79,7 @@ list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
      Classes/Entity.h
+     Classes/GameSettings.h
      Classes/GameState.h
      Classes/GameEngine.h
      Classes/nodes/Cloud.h

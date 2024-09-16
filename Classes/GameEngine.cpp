@@ -5,14 +5,9 @@
 #include "nodes/EnemyBullet.h"
 #include "nodes/Bullet.h"
 #include "CollisionBitmask.h"
+#include "GameSettings.h"
 
 USING_NS_CC;
-
-#define NEXT_ENEMY_DELAY 1.f
-#define NEXT_TIME_ADD_ENEMY 3.f
-
-//#define NEXT_ENEMY_DELAY 0.05f
-//#define NEXT_TIME_ADD_ENEMY 1.0f
 
 GameEngine::GameEngine()
 	: gameState(_gameState)
@@ -81,7 +76,11 @@ void GameEngine::update(float dt, Node *scene)
 	}
 
 	updateEnemyBullets(dt);
+	updateBullets(dt);
+}
 
+void GameEngine::updateBullets(float dt)
+{
 	for (auto const& bullet : _gameState.bullets) {
 		bullet->update(dt);
 	}
@@ -105,7 +104,6 @@ void GameEngine::update(float dt, Node *scene)
 	if (result.size() != _gameState.bullets.size()) {
 		_gameState.bullets = result;
 	}
-
 }
 
 void GameEngine::updateEnemyBullets(float dt)

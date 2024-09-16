@@ -2,7 +2,6 @@
 
 #include "nodes/Enemy.h"
 
-
 #include "cocos2d.h"
 
 class GameEngine;

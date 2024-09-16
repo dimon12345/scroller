@@ -2,10 +2,9 @@
 
 #include "CollisionBitmask.h"
 #include "GameEngine.h"
+#include "GameSettings.h"
 
 USING_NS_CC;
-
-#define BULLET_X_VELOCITY 150.f
 
 Node* Bullet::create(const Vec2 &position, float landHeight)
 {

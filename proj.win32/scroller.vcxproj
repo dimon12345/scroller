@@ -823,6 +823,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\pj\scroller\Classes\AppDelegate.h" />
     <ClInclude Include="C:\pj\scroller\Classes\HelloWorldScene.h" />
     <ClInclude Include="C:\pj\scroller\Classes\Entity.h" />
+    <ClInclude Include="C:\pj\scroller\Classes\GameSettings.h" />
     <ClInclude Include="C:\pj\scroller\Classes\GameState.h" />
     <ClInclude Include="C:\pj\scroller\Classes\GameEngine.h" />
     <ClInclude Include="C:\pj\scroller\Classes\nodes\Cloud.h" />

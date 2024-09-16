@@ -2,11 +2,9 @@
 
 #include "CollisionBitmask.h"
 #include "GameEngine.h"
+#include "GameSettings.h"
 
 USING_NS_CC;
-
-#define METEOR_X_VELOCITY -100.f
-#define METEOR_Y_VELOCITY -100.f
 
 cocos2d::Node* Meteor::create(float landHeight)
 {

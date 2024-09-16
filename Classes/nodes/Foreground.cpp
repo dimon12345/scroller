@@ -1,10 +1,9 @@
 #include "Foreground.h"
 
 #include "GameEngine.h"
+#include "GameSettings.h"
 
 USING_NS_CC;
-
-#define LAND_VELOCITY 500
 
 Node* Foreground::create()
 {
@@ -25,7 +24,7 @@ Node* Foreground::create()
         _landTiles.push_back(tile);
     }
 
-    _landVelocity = Vec2(-LAND_VELOCITY, 0);
+    _landVelocity = Vec2(LAND_VELOCITY, 0);
     _landPosition = Vec2(0, _tileSize.height/2);
 
     return _foregroundNode;

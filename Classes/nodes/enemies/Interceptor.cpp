@@ -4,17 +4,9 @@
 #include "nodes/EnemyBullet.h"
 #include "nodes/Bullet.h"
 #include "CollisionBitmask.h"
+#include "GameSettings.h"
 
 USING_NS_CC;
-
-#define INTERCEPTOR_MIN_HEIGHT 0.15f
-#define INTERCEPTOR_MAX_HEIGHT 0.9f
-#define INTERCEPTOR_VELOCITY -300.f
-#define INTERCEPTOR_Y_VELOCITY 200.f
-
-#define INTERCEPTOR_FIRE_RATE 1.5f
-#define BULLET_WIDTH 28.f
-#define BULLET_HEIGHT 4.f
 
 Interceptor::~Interceptor()
 {

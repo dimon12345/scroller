@@ -1,10 +1,7 @@
 #include "SlowBomber.h"
 
 #include "GameEngine.h"
-
-#define BOMBER_SLOW_MAX_HEIGHT 0.7f
-#define BOMBER_SLOW_MIN_HEIGHT 0.4f
-#define BOMBER_SLOW_VELOCITY -70.f
+#include "GameSettings.h"
 
 USING_NS_CC;
 

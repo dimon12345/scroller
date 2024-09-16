@@ -2,17 +2,9 @@
 
 #include "CollisionBitmask.h"
 #include "GameEngine.h"
+#include "GameSettings.h"
 
 USING_NS_CC;
-
-#define BIRD_X_MAX_VELOCITY -160.f
-#define BIRD_X_MIN_VELOCITY -130.f
-
-#define BIRD_Y_VELOCITY 40.f
-#define BIRD_MAX_HEIGHT 0.4f
-#define BIRD_MIN_HEIGHT 0.15f
-#define BIRD_MIN_TIME_CHANGE_DIRECTION 0.5f
-#define BIRD_MAX_TIME_CHANGE_DIRECTION 3.0f
 
 cocos2d::Node* Bird:: create() {
 

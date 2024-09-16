@@ -1,8 +1,8 @@
 #include "Background.h"
 
-USING_NS_CC;
+#include "GameSettings.h"
 
-#define BACKGROUND_CLOUDS_COUNT 50
+USING_NS_CC;
 
 Node* Background::create()
 {

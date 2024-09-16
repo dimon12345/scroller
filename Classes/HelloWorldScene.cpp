@@ -25,11 +25,9 @@
 #include "HelloWorldScene.h"
 
 #include "nodes/EnemyFactory.h"
+#include "GameSettings.h"
 
 USING_NS_CC;
-
-#define METEOR_MAX_TIME 15.f
-#define METEOR_MIN_TIME 10.f
 
 Scene* HelloWorld::createScene()
 {

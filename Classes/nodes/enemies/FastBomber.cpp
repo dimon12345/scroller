@@ -1,10 +1,7 @@
 #include "FastBomber.h"
 
 #include "GameEngine.h"
-
-#define BOMBER_FAST_MAX_HEIGHT 1.f
-#define BOMBER_FAST_MIN_HEIGHT 0.8f
-#define BOMBER_FAST_VELOCITY -200.f
+#include "GameSettings.h"
 
 USING_NS_CC;
 

@@ -8,6 +8,7 @@ class GameEngine {
 	GameState _gameState;
 
 	void updateEnemyBullets(float dt);
+	void updateBullets(float dt);
 	GameEngine();
 	GameEngine(const GameEngine&) = delete;
 	GameEngine& operator= (const GameEngine &engine) = delete;

@@ -1,15 +1,15 @@
 #include "EnemyBullet.h"
 
-USING_NS_CC;
+#include "GameSettings.h"
 
-#define BULLET_X_VELOCITY -450.f
+USING_NS_CC;
 
 #include "CollisionBitmask.h"
 
 Node* EnemyBullet::create(const Vec2 &position)
 {
     _position = position;
-    _velocity = Vec2(BULLET_X_VELOCITY, 0);
+    _velocity = Vec2(ENEMY_BULLET_X_VELOCITY, 0);
 
     _sprite = Sprite::create("world\\enemy_bullet.png");
     _sprite->setPosition(position);

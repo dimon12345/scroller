@@ -2,20 +2,12 @@
 
 #include "Bullet.h"
 #include "CollisionBitmask.h"
+#include "GameSettings.h"
 
 #include <iostream>
 #include <algorithm>
 
 USING_NS_CC;
-
-#define FIGHTER_ACCELERATION_RATE 200.f
-#define FIGHTER_MAX_VELOCITY 300.f
-#define FIGHTER_STOP_DISTANCE 10.f
-#define FIGHTER_BREAK_ACCELERATION_RATE -400.f
-#define FIGHTER_ON_PLACE_EPSILON 2.f
-#define FIGHTER_NEXT_SHOT_TIME_INTERVAL 0.3f
-
-#define LAND_HEIGHT 0.1f
 
 Node* Fighter::create()
 {

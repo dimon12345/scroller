@@ -72,6 +72,9 @@
     <ClInclude Include="C:\pj\scroller\Classes\Entity.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="C:\pj\scroller\Classes\GameSettings.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
     <ClInclude Include="C:\pj\scroller\Classes\GameState.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
