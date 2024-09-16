@@ -11,6 +11,6 @@ class Background {
 	std::list<std::shared_ptr<Cloud>> _clouds;
 public:
 	cocos2d::Node* create();
-	void restartClouds(bool randomX);
+	void restartClouds();
 	void update(float dt);
 };

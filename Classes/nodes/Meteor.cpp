@@ -6,9 +6,8 @@
 
 USING_NS_CC;
 
-cocos2d::Node* Meteor::create(float landHeight)
+cocos2d::Node* Meteor::create()
 {
-	_landHeight = landHeight;
 	_sprite = Sprite::create("world\\meteor.png");
 	createCirclePhysicsBody(
 		0.4f,
@@ -53,7 +52,7 @@ bool Meteor::checkVisibility()
 		return false;
 	}
 
-	if (_position.y < _landHeight-_size.height / 2) {
+	if (_position.y < GameEngine::getInstance().gameState.landHeight - _size.height / 2) {
 		return false;
 	}
 
@@ -63,7 +62,7 @@ bool Meteor::checkVisibility()
 void Meteor::hide()
 {
 	_visible = false;
-	_position = Vec2(-_size.width / 2, _landHeight - _size.height / 2);
+	_position = Vec2(-_size.width / 2, GameEngine::getInstance().gameState.landHeight - _size.height / 2);
 	_sprite->setPosition(_position);
 }
 

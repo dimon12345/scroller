@@ -45,7 +45,7 @@ void Bird::update(float dt)
 
 bool Bird::isVisible()
 {
-	if (_position.x + _sprite->getContentSize().width < 0) {
+	if (_position.x + _sprite->getContentSize().width / 2.f < 0) {
 		return false;
 	}
 

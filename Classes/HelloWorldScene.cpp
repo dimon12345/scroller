@@ -119,7 +119,7 @@ bool HelloWorld::init()
 
     _eventDispatcher->addEventListenerWithFixedPriority(_mouseListener, 1);
 
-    this->addChild(_meteor.create(GameEngine::getInstance().gameState.landHeight));
+    this->addChild(_meteor.create());
     _nextTimeShowMeteor = random(METEOR_MIN_TIME, METEOR_MAX_TIME);
 
     reset();
@@ -227,5 +227,5 @@ void HelloWorld::reset()
 
     _meteor.hide();
 
-    _background.restartClouds(true);
+    _background.restartClouds();
 }

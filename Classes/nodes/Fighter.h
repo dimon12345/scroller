@@ -20,7 +20,7 @@ class Fighter : public Entity {
 	float _maxHeight;
 
 	void updatePosition(float ft);
-	void updateBullets(float ft);
+	void updateNextShot(float ft);
 
 public:
 	cocos2d::Node* create();

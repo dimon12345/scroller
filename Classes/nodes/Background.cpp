@@ -18,7 +18,7 @@ Node* Background::create()
     return _backgroundNode;
 }
 
-void Background::restartClouds(bool randomX = false)
+void Background::restartClouds()
 {
     for (auto cloud : _clouds) {
         cloud->restartPosition(true);

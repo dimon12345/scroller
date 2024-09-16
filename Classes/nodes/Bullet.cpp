@@ -23,8 +23,8 @@ Node* Bullet::create(const Vec2 &position, float landHeight)
 
 void Bullet::update(float dt)
 {
-    _velocity += Vec2(0, -30.f * dt);
-    _position.add(Vec2(_velocity) * dt);
+    _velocity.y += BULLET_GRAVITY * dt;
+    _position += Vec2(_velocity) * dt;
     _sprite->setPosition(_position);
 }
 

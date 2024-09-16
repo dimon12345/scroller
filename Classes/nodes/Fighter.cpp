@@ -65,7 +65,7 @@ void Fighter::onMouseUp(Event* event)
 void Fighter::update(float dt)
 {
     updatePosition(dt);
-    updateBullets(dt);
+    updateNextShot(dt);
 }
 
 void Fighter::updatePosition(float dt) {
@@ -93,7 +93,7 @@ void Fighter::updatePosition(float dt) {
     }
 }
 
-void Fighter::updateBullets(float dt) {
+void Fighter::updateNextShot(float dt) {
     
     _nextShotTime -= dt;
 

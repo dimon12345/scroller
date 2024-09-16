@@ -23,7 +23,7 @@ Node* EnemyBullet::create(const Vec2 &position)
 
 void EnemyBullet::update(float dt)
 {
-    _velocity += Vec2(0, -30.f * dt);
+    _velocity.y += BULLET_GRAVITY * dt;
     _position += Vec2(_velocity) * dt;
     _sprite->setPosition(_position);
 }

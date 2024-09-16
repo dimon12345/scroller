@@ -14,12 +14,10 @@ Node* Foreground::create()
 
     const Size& visibleSize = GameEngine::getInstance().gameState.visibleSize;
     float fullSize = 0;
-    while (fullSize < visibleSize.width + _tileSize.width/2) {
+    while (fullSize < visibleSize.width + _tileSize.width) {
         auto tile = std::make_shared<Land>();
         auto tileNode = tile->create();
-        float width = tileNode->getContentSize().width;
-        float height = tileNode->getContentSize().height;
-        fullSize += width;
+        fullSize += _tileSize.width;
         _foregroundNode->addChild(tileNode);
         _landTiles.push_back(tile);
     }

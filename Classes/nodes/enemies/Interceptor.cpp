@@ -65,10 +65,13 @@ void Interceptor::updateVerticalVelocity(float dt)
 
 	for (auto bullet : GameEngine::getInstance().gameState.bullets) {
 		auto bulletPosition = bullet->getPosition();
+
+		// Skip all bullets at right of interceptor
 		if (bulletPosition.x > _position.x - crashSizeHorizontal) {
 			continue;
 		}
 
+		// Check if can fly up or down
 		if (bulletPosition.x > _position.x - interceptorSize.width / 2.f) {
 
 			float safeHeightTop = _position.y + interceptorSize.height / 2.f;
@@ -89,6 +92,7 @@ void Interceptor::updateVerticalVelocity(float dt)
 			continue;
 		}
 
+		// Find nearest bullet
 		float distance = bullet->getPosition().distance(_position);
 		if (distance < nearestBulletDistance) {
 			nearestBullet = bulletPosition;
@@ -96,6 +100,7 @@ void Interceptor::updateVerticalVelocity(float dt)
 		}
 	}
 
+	// Avoid nearest bullet
 	if (nearestBulletDistance < interceptorSize.width) {
 		float yVelocity = 0.f;
 		if (upSafe && (nearestBullet.y < _position.y)) {
